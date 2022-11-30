@@ -12,15 +12,27 @@ Contact::Contact(std::string firstname, std::string lastname,
   this->darkest_secret = darkest_secret;
 }
 
+#include <iomanip>
+#include <sstream>
+
 void Contact::display(int index) {
-  std::cout << index << " | " << firstname << " | " << lastname << " | "
-            << nickname << std::endl;
+  std::ostringstream oss;
+
+  oss << std::right << std::setw(10) << index << "|";
+  oss << std::right << std::setw(10) << firstname << "|";
+  oss << std::right << std::setw(10) << lastname << "|";
+  oss << std::right << std::setw(10) << nickname << "|";
+  oss << std::endl;
+  std::cout << oss.str();
 }
 
 void Contact::full_display(int index) {
-  std::cout << index << " | " << firstname << " | " << lastname << " | "
-            << nickname << " | " << phone << " | " << darkest_secret
-            << std::endl;
+  std::cout << index << std::endl;
+  std::cout << firstname << std::endl;
+  std::cout << lastname << std::endl;
+  std::cout << nickname << std::endl;
+  std::cout << phone << std::endl;
+  std::cout << darkest_secret << std::endl;
 }
 
 Contact Contact::fromUserInput() {

@@ -16,7 +16,6 @@ int main() {
     } else if (command.compare("ADD") == 0) {
       Contact contact = Contact::fromUserInput();
       phoneBook.addContact(contact);
-      std::cout << "Contact added" << std::endl;
     } else if (command.compare("SEARCH") == 0) {
       phoneBook.searchContact();
     }

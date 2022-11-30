@@ -7,7 +7,7 @@
 class PhoneBook {
 private:
   int registered = 0;
-  int current_index = 0;
+  int current_index = -1;
 
 public:
   PhoneBook();
