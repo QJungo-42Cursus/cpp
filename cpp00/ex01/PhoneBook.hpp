@@ -6,11 +6,12 @@
 
 class PhoneBook {
 private:
-  int registered = 0;
-  int current_index = -1;
+  int registered;
+  int current_index;
 
 public:
   PhoneBook();
+  //PhoneBook() : arr ( arrData ) {}
   void addContact(Contact contact);
   void searchContact();
   void displayContacts();
