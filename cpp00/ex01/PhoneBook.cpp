@@ -2,7 +2,14 @@
 #include "Contact.hpp"
 #include <iostream>
 
-PhoneBook::PhoneBook() {}
+PhoneBook::PhoneBook() {
+
+  registered = 0;
+  current_index = -1;
+
+  //this.contacts = contacts;
+
+}
 
 void PhoneBook::addContact(Contact contact) {
   current_index++;

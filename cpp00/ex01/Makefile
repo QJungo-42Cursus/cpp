@@ -22,8 +22,4 @@ re: fclean all
 t: all
 	./$(NAME) "salut les amis !"
 
-#db:
-#@$(CC) $(CFLAGS) -g $(SRCS) -o $(NAME)
-#lldb ./$(NAME) "salut les amis !"
-
 .PHONY: all clean fclean re
