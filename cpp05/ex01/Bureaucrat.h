@@ -1,6 +1,5 @@
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
-#include "common.h"
 #include <iostream>
 
 class Bureaucrat {
@@ -19,7 +18,7 @@ public:
   std::ostream &operator<<(std::ostream &os);
 
   /* Methods */
-  void signForm(Form &form);
+  // void signForm(Form &form);
 
 private:
   /* data members */
@@ -30,12 +29,8 @@ private:
   enum Grade { LOWEST = 150, HIGHEST = 1 };
 
   /* exceptions */
-  struct GradeTooHighException : public std::exception {
-    const char *what() const throw() { return "Grade too high"; }
-  };
-  struct GradeTooLowException : public std::exception {
-    const char *what() const throw() { return "Grade too low"; }
-  };
+  struct GradeTooHighException {};
+  struct GradeTooLowException {};
 };
 
 #endif /* BUREAUCRAT_H */

@@ -1,7 +1,8 @@
 #ifndef FORM_H
 #define FORM_H
-#include "common.h"
 #include <iostream>
+
+class Bureaucrat;
 
 class Form {
 public:
@@ -27,12 +28,7 @@ private:
   int const _gradeToExecute;
 
   /* Exceptions */
-  // TODO find a way to share exceptions between classes
-  struct iGradeTooHighException : public std::exception {
-    const char *what() const throw();
-  };
-  struct iGradeTooLowException : public std::exception {
-    const char *what() const throw();
-  };
+  struct GradeTooHighException {};
+  struct GradeTooLowException {};
 };
 #endif /* FORM_H */

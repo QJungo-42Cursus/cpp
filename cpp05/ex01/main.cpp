@@ -1,4 +1,3 @@
-/*
 #include "Bureaucrat.h"
 #include "Form.h"
 #include <iostream>
@@ -16,7 +15,11 @@ std::ostream &operator<<(std::ostream &os, Form const &b) {
 }
 
 int main() {
+  Form form("form", 1, 1);
   Bureaucrat c("Cindy", 150);
+  form.beSigned(c);
+  std::cout << form << std::endl;
+  return 0;
   Bureaucrat b("Bob", 1);
   try {
     c.decrementGrade();
@@ -24,8 +27,5 @@ int main() {
     std::cout << e.what() << std::endl;
   }
   std::cout << c;
+  // c.decrementGrade();
 }
-        */
-
-#include <iostream>
-int main() { std::cout << "Hello World" << std::endl; }
