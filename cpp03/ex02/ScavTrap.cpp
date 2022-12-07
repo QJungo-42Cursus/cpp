@@ -2,26 +2,39 @@
 #include <iostream>
 
 /* Constructors and Destructors */
-
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
-  this->_hitPoints = 100;
-  this->_energyPoints = 50;
-  this->_attackDamage = 20;
-  std::cout << "ScavTrap constructor called" << std::endl;
+  // On ne peut pas initialiser les attributs de la classe mère dans le corps
+  // (list initialiser) pour eviter le cas ou il serai const par exemple
+  _hitPoints = 100;
+  _energyPoints = 50;
+  _attackDamage = 20;
+  std::cout << "ScavTrap constructor called, ";
+  _printSpecs();
+}
+
+ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
+  std::cout << "ScavTrap copy constructor called, ";
+  _printSpecs();
 }
 
 ScavTrap::~ScavTrap() {
-  std::cout << "ScavTrap destructor called" << std::endl;
+  std::cout << "ScavTrap destructor called for " << COLOR_MAGENTA << _name
+            << COLOR_RESET << std::endl;
 }
 
 /* Member Functions */
-
 void ScavTrap::guardGate() {
-  std::cout << "ScavTrap " << _name << " has entered in Gate keeper mode."
-            << std::endl;
+  if (!_canAct("guardGate"))
+    return;
+  std::cout << COLOR_MAGENTA << _name << COLOR_RESET
+            << " has entered in Gate keeper mode" << std::endl;
 }
 
 void ScavTrap::attack(std::string const &target) {
-  std::cout << "ScavTrap " << _name << " attacks " << target << ", causing "
-            << _attackDamage << " points of damage!" << std::endl;
+  if (!_canAct("attack"))
+    return;
+  std::cout << COLOR_MAGENTA << _name << COLOR_RESET
+            << " attacks like a true ScavTrap " << COLOR_BOLD << target
+            << COLOR_RESET << ", causing " << _attackDamage
+            << " points of damage!" << std::endl;
 }

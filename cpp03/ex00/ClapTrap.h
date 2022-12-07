@@ -4,23 +4,28 @@
 #include <iostream>
 
 class ClapTrap {
-private:
-  std::string _name;
-  int _hitPoints = 10;
-  int _energyPoints = 10;
-  int _attackDamage = 0;
-
 public:
-  // Coplien's form
-  ClapTrap(std::string name);                 /// Constructor
-  ClapTrap(const ClapTrap &other);            /// Copy constructor
-  ~ClapTrap();                                /// Destructor
-  ClapTrap &operator=(const ClapTrap &other); /// Assignment operator
+  /* Constructors and Destructors */
+  ClapTrap();
+  ClapTrap(std::string name);
+  ClapTrap(const ClapTrap &other);
+  ~ClapTrap();
 
+  /* Operators */
+  ClapTrap &operator=(const ClapTrap &other);
 
+  /* Methods */
   void attack(const std::string &target);
   void takeDamage(unsigned int amount);
   void beRepaired(unsigned int amount);
+  bool canAct() const;
+  void printSpecs() const;
+
+private:
+  std::string _name;
+  int _hitPoints;
+  int _energyPoints;
+  int _attackDamage;
 };
 
 #endif /* CLAPTRAP_H */

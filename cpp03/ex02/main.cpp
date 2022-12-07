@@ -3,24 +3,33 @@
 #include "ScavTrap.h"
 #include <iostream>
 
+#include "ClapTrap.h"
+#include "ScavTrap.h"
+#include <iostream>
+
 int main() {
+  ClapTrap *jack = new ClapTrap("Jack_the_Clap");
+  ScavTrap thierry("Thierry_the_ScavTrap");
+  ScavTrap eude("Eude_the_ScavTrap");
+  ScavTrap thierry2(thierry);
+  jack->attack("Thierry_the_ScavTrap");
+  thierry.takeDamage(jack->getAttackDamage());
+  thierry.attack("Eude_the_ScavTrap");
+  eude.takeDamage(thierry.getAttackDamage());
   /*
-  ClapTrap clapTrap("ClapTrap_name");
-  clapTrap.attack("target");
-  clapTrap.takeDamage(10);
-  clapTrap.beRepaired(10);
-
-  ScavTrap scavTrap("ScavTrap_name");
-  scavTrap.attack("target");
-  scavTrap.takeDamage(10);
-  scavTrap.guardGate();
-  scavTrap.beRepaired(10);
+  while (eude.getEnergyPoints() > 0) {
+    eude.beRepaired(10);
+  }
   */
+  std::cout << eude.getEnergyPoints() << std::endl;
+  eude.beRepaired(10);
+  thierry.guardGate();
+  // delete jack;
 
-  FragTrap fragTrap("FragTrap_name");
-  fragTrap.attack("target");
-  fragTrap.takeDamage(10);
-  fragTrap.beRepaired(10);
-  fragTrap.highFivesGuys();
+  FragTrap micheal("Micheal_the_FragTrap");
+  micheal.attack("target");
+  micheal.takeDamage(10);
+  micheal.beRepaired(10);
+  micheal.highFivesGuys();
   return 0;
 }

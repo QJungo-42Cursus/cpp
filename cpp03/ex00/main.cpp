@@ -2,8 +2,12 @@
 #include <iostream>
 
 int main() {
-  ClapTrap clapTrap("ClapTrap_name");
-  clapTrap.attack("target");
+  ClapTrap clapTrap("Henry");
+  ClapTrap clapTrap2("Claire");
+
+  clapTrap.attack("Claire");
+  clapTrap2.takeDamage(0);
+
   clapTrap.takeDamage(10);
   clapTrap.beRepaired(10);
 
