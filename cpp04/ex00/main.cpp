@@ -19,7 +19,7 @@ int main() {
   j->makeSound();
   delete j;
 
-  // TODO devrait afficher le son du wrong animal ? 
+  // TODO devrait afficher le son du wrong animal ?
   const WrongCat *wrongCat = new WrongCat();
   wrongCat->makeSound();
   delete wrongCat;
