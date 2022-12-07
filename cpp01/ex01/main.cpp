@@ -2,10 +2,10 @@
 #include <iostream>
 
 int main() {
-	int N = 5;
-  Zombie *zombies = Zombie::zombieHorde(N, "ZombieName");
+  int N = 5;
+  Zombie *zombies = zombieHorde(N, "ZombieName");
   while (N--) {
-	zombies[N].announce();
+    zombies[N].announce();
   }
   delete[] zombies;
   return 0;

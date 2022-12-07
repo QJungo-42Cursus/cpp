@@ -1,9 +1,6 @@
 #include "Zombie.h"
-#include <iostream>
 
-/// cree un nouveau zombie dans la heap
-Zombie *Zombie::newZombie(std::string name) {
-  Zombie *newZombie = new Zombie(name);
-  newZombie->_name = name;
-  return newZombie;
+Zombie *newZombie(std::string name) {
+  Zombie *zombie = new Zombie(name);
+  return (zombie);
 }

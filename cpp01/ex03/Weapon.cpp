@@ -1,8 +1,11 @@
 #include "Weapon.h"
 
-Weapon::Weapon(std::string type) { _type = type; }
-
+/* Constructor and Destructor */
+Weapon::Weapon(std::string type) : _type(type) {}
 Weapon::~Weapon() {}
 
+/* Setter */
 void Weapon::setType(std::string type) { _type = type; }
-const std::string &Weapon::getType() { return _type; }
+
+/* Getter */
+const std::string &Weapon::getType() const { return _type; }

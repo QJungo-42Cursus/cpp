@@ -1,11 +1,24 @@
 #include "Harl.h"
 #include <iostream>
 
-Harl::Harl() {
-  complainFunc[DEBUG] = &Harl::debug;
-  complainFunc[INFO] = &Harl::info;
-  complainFunc[WARNING] = &Harl::warning;
-  complainFunc[ERROR] = &Harl::error;
+Harl::Level Harl::_level = Harl::DEBUG;
+const std::string Harl::levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
+void Harl::setLevel(std::string level) {
+  bool isLevel = false;
+  for (int i = 0; i < 4; i++) {
+    if (level == Harl::levels[i]) {
+      Harl::_level = (Harl::Level)i;
+      return;
+    }
+  }
+  std::cerr << "Usage: <level>" << std::endl
+            << "level must be one of the following: ";
+  for (int i = 0; i < 4; i++) {
+    std::cerr << "'" << levels[i] << "' ";
+  }
+  std::cerr << std::endl;
+  exit(1);
 }
 
 void Harl::debug() const {
@@ -27,7 +40,7 @@ void Harl::error() const {
 void Harl::complain(std::string level) {
   Harl harl;
   Harl::Level current_level;
-  for (int i = 0; i < 4; i++) {
+  for (int i = ERROR; i >= _level; i--) {
     if (level == harl.levels[i]) {
       current_level = (Harl::Level)i;
       (harl.*harl.complainFunc[current_level])();

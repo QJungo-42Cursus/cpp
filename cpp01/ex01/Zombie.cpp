@@ -1,16 +1,15 @@
 #include "Zombie.h"
 #include <iostream>
 
-// Zombie::Zombie(std::string name) { _name = name; }
+/* Constructor */
 Zombie::Zombie() {}
+Zombie::Zombie(std::string name) { _name = name; }
 Zombie::~Zombie() {}
+
+/* Methods */
 void Zombie::announce() {
   std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
 
-/// cree un nouveau zombie dans la heap
-Zombie *Zombie::newZombie(std::string name) {
-  Zombie *newZombie = new Zombie;
-  newZombie->_name = name;
-  return newZombie;
-}
+/* Setters */
+void Zombie::setName(std::string name) { _name = name; }

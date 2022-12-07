@@ -1,9 +1,9 @@
-NAME =     	ft_sed
-CC =				c++
-CFLAGS =		-Wall -Wextra -Werror -std=c++98
-RM =				rm -f
+NAME =     		test
+CC =			c++
+CFLAGS =		-Wall -Wextra -Werror -std=c++98 -no-pie
+RM =			rm -f
 
-SRCS =			main.cpp
+SRCS =			tests.cpp Account.cpp
 OBJS =			$(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -19,10 +19,12 @@ fclean: clean
 
 re: fclean all
 
-t: all
+t:
+	make all
 	./$(NAME)
 
 san: $(OBJS)
-	@$(CC) $(CFLAGS) -fsanitize=address $(OBJS) -o $(NAME)
+	@$(CC) $(CFLAGS) -fsanitize=address $(OBJS) -o $(NAME) || make fclean
+	./$(NAME)
 
 .PHONY: all clean fclean re

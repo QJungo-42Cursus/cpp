@@ -2,6 +2,8 @@
 #include <iostream>
 
 int main() {
-  Zombie::randomChump("Kiki");
+  Zombie *zombie = newZombie("KikiOnTheHeap");
+  delete zombie;
+  randomChump("KikiOnTheStack");
   return 0;
 }

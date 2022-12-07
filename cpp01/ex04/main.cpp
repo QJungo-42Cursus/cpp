@@ -1,32 +1,32 @@
 #include <fstream>
 #include <iostream>
 
-void open_file(std::ifstream &file, char *filename) {
+static void open_file(std::ifstream &file, std::string filename) {
   file.open(filename, std::ios::in);
   if (!file.good()) {
-    std::cout << "File " << filename << " does not exist" << std::endl;
+    std::cerr << "File " << filename << " does not exist" << std::endl;
     exit(1);
   }
   if (!file.is_open()) {
-    std::cout << "Error opening file " << filename << std::endl;
+    std::cerr << "Error opening file " << filename << std::endl;
     exit(1);
   }
 }
 
-void create_file(std::ofstream &new_file, std::string filename) {
+static void create_file(std::ofstream &new_file, std::string filename) {
   new_file.open(filename, std::ios::out);
   if (!new_file.good()) {
-    std::cout << "Error creating file " << filename << std::endl;
+    std::cerr << "Error creating file " << filename << std::endl;
     exit(1);
   }
   if (!new_file.is_open()) {
-    std::cout << "Error opening file " << filename << std::endl;
+    std::cerr << "Error opening file " << filename << std::endl;
     exit(1);
   }
 }
 
-void sed(std::ifstream &file, std::ofstream &new_file, std::string string1,
-         std::string string2) {
+static void sed(std::ifstream &file, std::ofstream &new_file,
+                std::string string1, std::string string2) {
   std::string content_file;
   content_file.assign((std::istreambuf_iterator<char>(file)),
                       (std::istreambuf_iterator<char>()));
@@ -40,21 +40,25 @@ void sed(std::ifstream &file, std::ofstream &new_file, std::string string1,
 
 int main(int argc, char **argv) {
   if (argc != 4) {
-    std::cout << "Usage: " << argv[0] << " <filename> <string1> <string2>"
+    std::cerr << "Usage: " << argv[0] << " <filename> <string1> <string2>"
               << std::endl;
     exit(1);
   }
 
+  /// File names
+  std::string filename = argv[1];
+  std::string filename_copy = filename + std::string(".replace");
+
+  /// Open/Create files
   std::ifstream file;
   std::ofstream file_copy;
-  std::string file_name = argv[1];
-  std::string file_name_copy = argv[1] + std::string(".replace");
+  open_file(file, filename);
+  create_file(file_copy, filename_copy);
 
-  open_file(file, argv[1]);
-  create_file(file_copy, file_name_copy.c_str());
-
+  /// Sed
   sed(file, file_copy, argv[2], argv[3]);
 
+  /// Close files
   file.close();
   file_copy.close();
   return 0;

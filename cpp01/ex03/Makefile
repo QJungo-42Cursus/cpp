@@ -22,4 +22,8 @@ re: fclean all
 t: all
 	./$(NAME)
 
+san: $(OBJS)
+	@$(CC) $(CFLAGS) -fsanitize=address $(OBJS) -o $(NAME)
+	./$(NAME)
+
 .PHONY: all clean fclean re
