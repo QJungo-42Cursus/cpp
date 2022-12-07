@@ -31,4 +31,13 @@ private:
   struct GradeTooHighException {};
   struct GradeTooLowException {};
 };
+/*
+  class GradeTooHighException : public std::exception {
+    virtual const char *what() const throw();
+  };
+  class GradeTooLowException : public std::exception {
+    virtual const char *what() const throw();
+  };
+*/
+
 #endif /* FORM_H */

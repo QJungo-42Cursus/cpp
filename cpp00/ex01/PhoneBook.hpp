@@ -6,7 +6,7 @@
 
 class PhoneBook {
 private:
-  int registered;
+  unsigned int registered;
   int current_index;
 
 public:

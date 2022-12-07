@@ -4,28 +4,29 @@
 #include <sstream>
 #include <string>
 
-Contact::Contact(std::string firstname, std::string lastname,
-                 std::string nickname, unsigned int phone,
-                 std::string darkest_secret)
-    : firstname(firstname), lastname(lastname), nickname(nickname),
-      phone(phone), darkest_secret(darkest_secret) {}
-
+/* Constructor */
 Contact::Contact()
     : firstname(""), lastname(""), nickname(""), phone(0), darkest_secret("") {}
 
-void Contact::display(int index) {
-  std::ostringstream oss;
-
-  // TODO si plus grand que 10 char, tronquer
-  oss << std::right << std::setw(10) << index << "|";
-  oss << std::right << std::setw(10) << firstname << "|";
-  oss << std::right << std::setw(10) << lastname << "|";
-  oss << std::right << std::setw(10) << nickname << "|";
-  oss << std::endl;
-  std::cout << oss.str();
+/* Display Methods */
+static void print_field(std::string field) {
+  if (field.length() > 9) {
+    std::cout << field.substr(0, 9) << ".";
+  } else {
+    std::cout << std::setw(10) << field;
+  }
+  std::cout << "|";
 }
 
-void Contact::full_display(int index) {
+void Contact::display(int index) const {
+  std::cout << std::right << std::setw(10) << index << "|";
+  print_field(firstname);
+  print_field(lastname);
+  print_field(nickname);
+  std::cout << std::endl;
+}
+
+void Contact::full_display(int index) const {
   std::cout << index << std::endl;
   std::cout << firstname << std::endl;
   std::cout << lastname << std::endl;
@@ -34,6 +35,7 @@ void Contact::full_display(int index) {
   std::cout << darkest_secret << std::endl;
 }
 
+/* Input Methods */
 static void get_input(std::string &to_fill, std::string name) {
   while (to_fill.empty()) {
     std::cout << "Enter " << name << ": ";

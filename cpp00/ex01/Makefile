@@ -23,7 +23,7 @@ t: all
 	./$(NAME)
 
 san: fclean
-	@$(CC) $(CFLAGS) -fsanitize=address $(SRCS) -o $(NAME)
+	@$(CC) $(CFLAGS) -fsanitize=address $(SRCS) -o $(NAME) || make fclean
 	./$(NAME)
 
 .PHONY: all clean fclean re

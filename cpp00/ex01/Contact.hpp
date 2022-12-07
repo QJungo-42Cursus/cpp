@@ -12,11 +12,9 @@ private:
 
 public:
   Contact();
-  Contact(std::string firstname, std::string lastname, std::string nickname,
-          unsigned int phone, std::string darkest_secret);
   static Contact fromUserInput();
-  void display(int index);
-  void full_display(int index);
+  void display(int index) const;
+  void full_display(int index) const;
 };
 
 #endif /* CONTACT_HPP */
