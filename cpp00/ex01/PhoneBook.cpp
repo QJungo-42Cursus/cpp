@@ -2,14 +2,7 @@
 #include "Contact.hpp"
 #include <iostream>
 
-PhoneBook::PhoneBook() {
-
-  registered = 0;
-  current_index = -1;
-
-  //this.contacts = contacts;
-
-}
+PhoneBook::PhoneBook() : registered(0), current_index(-1) {}
 
 void PhoneBook::addContact(Contact contact) {
   current_index++;
@@ -22,6 +15,10 @@ void PhoneBook::addContact(Contact contact) {
 }
 
 void PhoneBook::searchContact() {
+  if (current_index == -1) {
+    std::cout << "No contacts to display" << std::endl;
+    return;
+  }
   /// Will first display all contacts
   this->displayContacts();
 
@@ -41,9 +38,6 @@ void PhoneBook::searchContact() {
 }
 
 void PhoneBook::displayContacts() {
-  for (int i = 0; i < 8; i++) {
-    if (registered == i)
-      break;
+  for (int i = 0; i < 8 && registered != i; i++)
     contacts[i].display(i);
-  }
 }

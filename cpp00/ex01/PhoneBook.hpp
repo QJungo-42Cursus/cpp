@@ -11,15 +11,10 @@ private:
 
 public:
   PhoneBook();
-  //PhoneBook() : arr ( arrData ) {}
   void addContact(Contact contact);
   void searchContact();
   void displayContacts();
-  Contact contacts[8] = {
-      Contact("", "", "", "", ""), Contact("", "", "", "", ""),
-      Contact("", "", "", "", ""), Contact("", "", "", "", ""),
-      Contact("", "", "", "", ""), Contact("", "", "", "", ""),
-      Contact("", "", "", "", ""), Contact("", "", "", "", "")};
+  Contact contacts[8];
 };
 
 #endif /* PHONEBOOK_HPP */

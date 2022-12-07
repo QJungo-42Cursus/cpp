@@ -20,6 +20,10 @@ fclean: clean
 re: fclean all
 
 t: all
-	./$(NAME) "salut les amis !"
+	./$(NAME)
+
+san: fclean
+	@$(CC) $(CFLAGS) -fsanitize=address $(SRCS) -o $(NAME)
+	./$(NAME)
 
 .PHONY: all clean fclean re

@@ -4,19 +4,19 @@
 
 class Contact {
 private:
-  std::string phone;
-  std::string darkest_secret;
-
-public:
   std::string firstname;
   std::string lastname;
   std::string nickname;
+  unsigned int phone;
+  std::string darkest_secret;
 
+public:
+  Contact();
   Contact(std::string firstname, std::string lastname, std::string nickname,
-          std::string phone, std::string darkest_secret);
+          unsigned int phone, std::string darkest_secret);
+  static Contact fromUserInput();
   void display(int index);
   void full_display(int index);
-  static Contact fromUserInput();
 };
 
 #endif /* CONTACT_HPP */
