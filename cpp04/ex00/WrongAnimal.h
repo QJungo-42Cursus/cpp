@@ -10,6 +10,9 @@ public:
   std::string getType() const;
   virtual void makeSound() const;
 
+  /* Operator Overload */
+  WrongAnimal &operator=(const WrongAnimal &other);
+
 protected:
   std::string type;
 };

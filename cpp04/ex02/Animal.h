@@ -5,12 +5,18 @@
 
 class Animal {
 public:
-  virtual ~Animal() = default;
+  /* Constructors and Destructors */
+  Animal(const Animal &other);
+  virtual ~Animal();
+
+  /* Operator Overload */
+  Animal &operator=(const Animal &other);
+
   virtual std::string getType() const;
   virtual void makeSound() const;
 
 protected:
-  Animal() = default;
+  Animal();
   Brain *brain;
   std::string type;
 };

@@ -12,6 +12,18 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
   _printSpecs();
 }
 
+ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
+  if (this != &other) {
+    _name = other._name;
+    _hitPoints = other._hitPoints;
+    _energyPoints = other._energyPoints;
+    _attackDamage = other._attackDamage;
+  }
+  std::cout << "ScavTrap assignation operator called, ";
+  _printSpecs();
+  return *this;
+}
+
 ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
   std::cout << "ScavTrap copy constructor called, ";
   _printSpecs();

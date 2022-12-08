@@ -1,36 +1,47 @@
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
+#include "Form.h"
 #include <iostream>
 
 class Bureaucrat {
 public:
   /* Constructors and Destructors */
+  Bureaucrat();
   Bureaucrat(std::string const &name, int grade);
+  Bureaucrat(Bureaucrat const &src);
+  ~Bureaucrat();
+
+  /* Operators overloads */
+  Bureaucrat &operator=(Bureaucrat const &rhs);
 
   /* getters */
   std::string const &getName() const;
   int getGrade() const;
 
-  /* Setters */
+  /* Modifiers */
   void incrementGrade();
   void decrementGrade();
 
-  std::ostream &operator<<(std::ostream &os);
-
   /* Methods */
-  // void signForm(Form &form);
+  void signForm(Form &form);
+
+  /* exceptions */
+  struct GradeTooHighException : public std::exception {
+    virtual const char *what() const throw() { return "Grade too high"; }
+  };
+  struct GradeTooLowException : public std::exception {
+    virtual const char *what() const throw() { return "Grade too low"; }
+  };
 
 private:
   /* data members */
-  std::string const _name;
+  const std::string _name;
   int _grade;
 
-  /**/
+  /* Enums */
   enum Grade { LOWEST = 150, HIGHEST = 1 };
-
-  /* exceptions */
-  struct GradeTooHighException {};
-  struct GradeTooLowException {};
 };
+
+std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs);
 
 #endif /* BUREAUCRAT_H */

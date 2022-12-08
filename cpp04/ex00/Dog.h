@@ -1,13 +1,15 @@
 #ifndef DOG_H
 #define DOG_H
-
 #include "Animal.h"
-#include <iostream>
 
 class Dog : public Animal {
 public:
+  /* Constructor and Destructor */
   Dog();
+  Dog(const Dog &other);
   ~Dog();
+
+  /* Methods override */
   void makeSound() const;
 };
 

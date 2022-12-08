@@ -6,11 +6,16 @@
 class Animal {
 public:
   Animal();
-  ~Animal();
+  Animal(const Animal &other);
+  virtual ~Animal();
+
   std::string getType() const; // const at the end mean that the function will
                                // not modify the object
   virtual void makeSound() const; // virtual means that the function can be
                                   // overriden in a derived class
+
+  /* Operator Overload */
+  Animal &operator=(const Animal &other);
 
 protected:
   Brain *brain;

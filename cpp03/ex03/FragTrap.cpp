@@ -20,6 +20,19 @@ FragTrap::~FragTrap() {
   std::cout << "FragTrap destructor called for " << this->_name << std::endl;
 }
 
+/* Operators Overload */
+FragTrap &FragTrap::operator=(const FragTrap &fragTrap) {
+  if (this != &fragTrap) {
+    this->_name = fragTrap._name;
+    this->_hitPoints = fragTrap._hitPoints;
+    this->_energyPoints = fragTrap._energyPoints;
+    this->_attackDamage = fragTrap._attackDamage;
+  }
+  std::cout << "FragTrap operator= called, ";
+  _printSpecs();
+  return *this;
+}
+
 /* Member Functions */
 
 void FragTrap::highFivesGuys() {

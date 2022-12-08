@@ -11,6 +11,9 @@ public:
   FragTrap(const FragTrap &other);
   ~FragTrap();
 
+  /* Operators Overload */
+  FragTrap &operator=(const FragTrap &other);
+
   /* Methods */
   void highFivesGuys();
 };

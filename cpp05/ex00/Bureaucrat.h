@@ -1,37 +1,43 @@
 #ifndef BUREAUCRAT_H
 #define BUREAUCRAT_H
-
 #include <iostream>
 
 class Bureaucrat {
 public:
   /* Constructors and Destructors */
+  Bureaucrat();
   Bureaucrat(std::string const &name, int grade);
+  Bureaucrat(Bureaucrat const &src);
+  ~Bureaucrat();
+
+  /* Operators overloads */
+  Bureaucrat &operator=(Bureaucrat const &rhs);
 
   /* getters */
   std::string const &getName() const;
   int getGrade() const;
 
-  /* Setters */
+  /* Modifiers */
   void incrementGrade();
   void decrementGrade();
 
-  std::ostream &operator<<(std::ostream &os);
-private:
-  /* data members */
-  std::string const _name;
-  int _grade;
-
-  /**/
-  enum Grade { LOWEST = 150, HIGHEST = 1 };
-
   /* exceptions */
   struct GradeTooHighException : public std::exception {
-    const char *what() const throw() { return "Grade too high"; }
+    virtual const char *what() const throw() { return "Grade too high"; }
   };
   struct GradeTooLowException : public std::exception {
-    const char *what() const throw() { return "Grade too low"; }
+    virtual const char *what() const throw() { return "Grade too low"; }
   };
+
+private:
+  /* data members */
+  const std::string _name;
+  int _grade;
+
+  /* Enums */
+  enum Grade { LOWEST = 150, HIGHEST = 1 };
 };
+
+std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs);
 
 #endif /* BUREAUCRAT_H */

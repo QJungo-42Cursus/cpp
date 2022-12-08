@@ -7,9 +7,14 @@ class Bureaucrat;
 class Form {
 public:
   /* Constructors and destructor */
+  Form();
   Form(std::string const &name, int const gradeToSign,
        int const gradeToExecute);
+  Form(Form const &src);
   ~Form();
+
+  /* Operators overloads */
+  Form &operator=(Form const &rhs);
 
   /* Getters */
   std::string const &getName() const;
@@ -20,24 +25,22 @@ public:
   /* Setters */
   void beSigned(Bureaucrat const &bureaucrat);
 
-private:
-  /* Data */
-  std::string const _name;
-  bool _signed;
-  int const _gradeToSign;
-  int const _gradeToExecute;
+  /* exceptions */
+  struct GradeTooHighException : public std::exception {
+    virtual const char *what() const throw() { return "Grade too high"; }
+  };
+  struct GradeTooLowException : public std::exception {
+    virtual const char *what() const throw() { return "Grade too low"; }
+  };
 
-  /* Exceptions */
-  struct GradeTooHighException {};
-  struct GradeTooLowException {};
+private:
+  const std::string _name;
+  const int _gradeToSign;
+  const int _gradeToExecute;
+  bool _signed;
 };
-/*
-  class GradeTooHighException : public std::exception {
-    virtual const char *what() const throw();
-  };
-  class GradeTooLowException : public std::exception {
-    virtual const char *what() const throw();
-  };
-*/
+
+/* Operators overloads */
+std::ostream &operator<<(std::ostream &o, Form const &rhs);
 
 #endif /* FORM_H */

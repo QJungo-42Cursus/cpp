@@ -2,30 +2,34 @@
 #include "Form.h"
 #include <iostream>
 
-// TODO mettre ailleurs
-std::ostream &operator<<(std::ostream &os, Bureaucrat const &b) {
-  os << b.getName() << ", bureaucrat grade " << b.getGrade();
-  return os;
-}
-
-std::ostream &operator<<(std::ostream &os, Form const &b) {
-  os << b.getName() << ", form grade " << b.getGradeToSign() << " to sign and "
-     << b.getGradeToExecute() << " to execute";
-  return os;
-}
+void endl() { std::cout << std::endl; }
 
 int main() {
-  Form form("form", 1, 1);
+  Form form("form", 5, 2);
   Bureaucrat c("Cindy", 150);
-  // form.beSigned(c);
-  std::cout << form << std::endl;
-  return 0;
-  Bureaucrat b("Bob", 1);
   try {
-    c.decrementGrade();
+    c.signForm(form);
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
   }
-  std::cout << c;
-  // c.decrementGrade();
+  endl();
+
+  std::cout << form << std::endl;
+  endl();
+
+  Bureaucrat b("Bob", 1);
+  try {
+    b.decrementGrade();
+  } catch (std::exception &e) {
+    std::cout << e.what() << std::endl;
+  }
+
+  std::cout << b << std::endl;
+  try {
+    b.signForm(form);
+  } catch (std::exception &e) {
+    std::cout << e.what() << std::endl;
+  }
+
+  std::cout << form << std::endl;
 }

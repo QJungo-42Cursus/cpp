@@ -17,6 +17,18 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
   _printSpecs();
 }
 
+ScavTrap &ScavTrap::operator=(const ScavTrap &other) {
+  if (this != &other) {
+    _name = other._name;
+    _hitPoints = other._hitPoints;
+    _energyPoints = other._energyPoints;
+    _attackDamage = other._attackDamage;
+  }
+  std::cout << "ScavTrap assignation operator called, ";
+  _printSpecs();
+  return *this;
+}
+
 ScavTrap::~ScavTrap() {
   std::cout << "ScavTrap destructor called for " << COLOR_MAGENTA << _name
             << COLOR_RESET << std::endl;
