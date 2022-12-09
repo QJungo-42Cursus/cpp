@@ -1,18 +1,24 @@
 #ifndef EASYFIND_H
 #define EASYFIND_H
 #include <algorithm>
+#include <array>
+#include <deque>
+#include <forward_list>
 #include <iostream>
+#include <list>
 #include <vector>
 
-template <typename T> int easyfind(T container, int i) {
-  // TODO check si c'est un container / de int ?
+struct NotFoundException : public std::exception {
+  virtual const char *what() const throw() { return "Not found"; }
+};
 
-  auto res = std::find(container.begin(), container.end(), i);
-  if (res != container.end()) {
-    return (*res);
-  } else {
-    throw std::exception();
+template <typename T> int easyfind(T &container, int i) {
+  typename T::const_iterator it =
+      std::find(container.begin(), container.end(), i);
+  if (it == container.end()) {
+    throw NotFoundException();
   }
+  return *it;
 }
 
 #endif /* EASYFIND_H */

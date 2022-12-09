@@ -1,5 +1,4 @@
 #include "easyfind.h"
-#include <algorithm>
 #include <array>
 #include <deque>
 #include <forward_list>
@@ -7,37 +6,37 @@
 #include <list>
 #include <vector>
 
-#define INTS ints = {2, 5, 6, 5}
-
-template <typename T> void test(T ints) {
+template <typename T> void test() {
+  int to_find = 2;
+  T ints = {2, 5, 6, 5};
   try {
-    int res = easyfind(ints, 5);
-    std::cout << "salut : " << res << std::endl;
+    std::cout << "trouve : " << easyfind(ints, to_find) << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "pas trouve :< " << std::endl;
+  }
+}
+
+template <typename T> void test_fail() {
+  int to_find = 9;
+  T ints = {2, 5, 6, 5};
+  try {
+    std::cout << "trouve : " << easyfind(ints, to_find) << std::endl;
   } catch (std::exception &e) {
     std::cout << "pas trouve :< " << std::endl;
   }
 }
 
 int main(void) {
-  {
-    std::vector<int> INTS;
-    test<std::vector<int>>(ints);
-  }
-  {
-    std::list<int> INTS;
-    test<std::list<int>>(ints);
-  }
-  {
-    std::array<int, 4> INTS;
-    test<std::array<int, 4>>(ints);
-  }
-  {
-    std::deque<int> INTS;
-    test<std::deque<int>>(ints);
-  }
-  {
-    std::forward_list<int> INTS;
-    test<std::forward_list<int>>(ints);
-  }
+  test_fail<std::vector<int>>();
+  test_fail<std::list<int>>();
+  test_fail<std::array<int, 4>>();
+  test_fail<std::deque<int>>();
+  test_fail<std::forward_list<int>>();
+
+  test<std::vector<int>>();
+  test<std::list<int>>();
+  test<std::array<int, 4>>();
+  test<std::deque<int>>();
+  test<std::forward_list<int>>();
   return (0);
 }
