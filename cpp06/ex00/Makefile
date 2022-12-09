@@ -22,14 +22,14 @@ re: fclean all
 t: all
 	./$(NAME) 0
 	./$(NAME) nan
-	./$(NAME) 0.5f
+	./$(NAME) 42.0f
 	./$(NAME) 0.5
 
 san:
 	$(CC) -g -fsanitize=address $(SRCS) -o $(NAME)
 	./$(NAME) 0
 	./$(NAME) nan
-	./$(NAME) 0.5f
+	./$(NAME) 42.0f
 	./$(NAME) 0.5
 
 .PHONY: all clean fclean re
