@@ -6,6 +6,8 @@
 #include <list>
 #include <vector>
 
+#include <stack>
+
 template <typename T> void test() {
   int to_find = 2;
   T ints = {2, 5, 6, 5};
@@ -38,5 +40,17 @@ int main(void) {
   test<std::array<int, 4>>();
   test<std::deque<int>>();
   test<std::forward_list<int>>();
-  return (0);
+
+  /*  Pas d'iterator sur les stack
+std::stack<int> ints;
+int to_find = 2;
+ints.push(2);
+ints.push(5);
+try {
+std::cout << "trouve : " << easyfind(ints, to_find) << std::endl;
+} catch (std::exception &e) {
+std::cout << "pas trouve :< " << std::endl;
+}
+return (0);
+  */
 }
