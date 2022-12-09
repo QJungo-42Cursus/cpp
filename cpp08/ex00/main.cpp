@@ -1,19 +1,43 @@
-#include "whatever.h"
+#include "easyfind.h"
+#include <algorithm>
+#include <array>
+#include <deque>
+#include <forward_list>
 #include <iostream>
+#include <list>
+#include <vector>
+
+#define INTS ints = {2, 5, 6, 5}
+
+template <typename T> void test(T ints) {
+  try {
+    int res = easyfind(ints, 5);
+    std::cout << "salut : " << res << std::endl;
+  } catch (std::exception &e) {
+    std::cout << "pas trouve :< " << std::endl;
+  }
+}
 
 int main(void) {
-  int a = 2;
-  int b = 3;
-  std::cout << "Original : a = " << a << ", b = " << b << std::endl;
-  ::swap(a, b);
-  std::cout << "After Swap : a = " << a << ", b = " << b << std::endl;
-  std::cout << "min( a, b ) = " << ::min(a, b) << std::endl;
-  std::cout << "max( a, b ) = " << ::max(a, b) << std::endl;
-  std::string c = "chaine1";
-  std::string d = "chaine2";
-  ::swap(c, d);
-  std::cout << "c = " << c << ", d = " << d << std::endl;
-  std::cout << "min( c, d ) = " << ::min(c, d) << std::endl;
-  std::cout << "max( c, d ) = " << ::max(c, d) << std::endl;
-  return 0;
+  {
+    std::vector<int> INTS;
+    test<std::vector<int>>(ints);
+  }
+  {
+    std::list<int> INTS;
+    test<std::list<int>>(ints);
+  }
+  {
+    std::array<int, 4> INTS;
+    test<std::array<int, 4>>(ints);
+  }
+  {
+    std::deque<int> INTS;
+    test<std::deque<int>>(ints);
+  }
+  {
+    std::forward_list<int> INTS;
+    test<std::forward_list<int>>(ints);
+  }
+  return (0);
 }
