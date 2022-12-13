@@ -6,6 +6,19 @@
 
 template <typename T> class MutantStack : public std::stack<T> {
 public:
+  /* TODO la version de ft_containers
+  MutantStack<T>& operator=(const MutantStack<T>& rhs)
+  {
+          this->c = rhs.c;
+          return *this;
+  }
+  ~MutantStack() {}
+
+  typedef typename ft::stack<T>::container_type::iterator iterator;
+
+  iterator begin() { return this->c.begin(); }
+  iterator end() { return this->c.end(); }
+  */
   /* Constructors and Destructor */
   MutantStack() {}
   MutantStack(const MutantStack &other) {}
@@ -52,6 +65,12 @@ public:
 
     iterator &operator--() {
       _it--;
+      return *this;
+    }
+
+    // TODO est-ce que ca morche ?
+    iterator &operator++(int) {
+      _it++;
       return *this;
     }
 
