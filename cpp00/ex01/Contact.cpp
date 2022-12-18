@@ -52,14 +52,22 @@ Contact Contact::fromUserInput() {
   get_input(contact.lastname, "lastname");
   get_input(contact.nickname, "nickname");
   while (contact.phone == 0) {
+    long phone_number;
     std::string phone;
     std::cout << "Enter phone: ";
     std::getline(std::cin, phone);
     std::stringstream ss(phone);
-    if (ss.fail() || !(ss >> contact.phone)) {
+    if (ss.fail() || !(ss >> phone_number)) {
       std::cout << "Invalid phone number" << std::endl;
       contact.phone = 0;
+      continue;
     }
+    if (phone_number < 0) {
+      std::cout << "Invalid phone number" << std::endl;
+      contact.phone = 0;
+      continue;
+    }
+    contact.phone = phone_number;
   }
   get_input(contact.darkest_secret, "darkest secret");
 

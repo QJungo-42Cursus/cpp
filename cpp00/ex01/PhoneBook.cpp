@@ -1,6 +1,8 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include <iomanip>
 #include <iostream>
+#include <sstream>
 #include <string>
 
 /* Constructor */
@@ -19,7 +21,7 @@ void PhoneBook::addContact(Contact contact) {
 
 /* Display Methods */
 void PhoneBook::displayContacts() {
-  for (int i = 0; i < 8 && registered != i; i++)
+  for (unsigned int i = 0; i < 8 && registered != i; i++)
     contacts[i].display(i);
 }
 
@@ -35,15 +37,24 @@ void PhoneBook::searchContact() {
   this->displayContacts();
 
   /// Then ask for the index of the contact to display
-  unsigned int index;
+  long index;
   while (true) {
     std::cout << "Enter index: ";
     std::string index_input;
     std::getline(std::cin, index_input);
 
+    // if the first is not a number, it will return false
+    if (index_input[0] < '0' || index_input[0] > '9') {
+      std::cout << "Invalid index" << std::endl;
+      continue;
+    }
+
     try {
-      index = std::stoi(index_input); // TODO avec sanitizer il ne compile pas
-    } catch (std::invalid_argument &e) {
+      std::istringstream(index_input) >> index;
+      std::cout << "index: " << index << std::endl;
+      if (index < 0)
+        throw std::invalid_argument("Invalid index");
+    } catch (std::exception &e) {
       std::cout << "Invalid index" << std::endl;
       continue;
     }

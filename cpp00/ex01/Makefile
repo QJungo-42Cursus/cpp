@@ -1,12 +1,15 @@
 NAME =     		phone_book
 CC =			c++
-CFLAGS =		-Wall -Wextra -Werror -std=c++98
+CFLAGS =		-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 RM =			rm -f
 
 SRCS =			main.cpp Contact.cpp PhoneBook.cpp
 OBJS =			$(SRCS:.cpp=.o)
 
 all: $(NAME)
+
+%.o: %.cpp Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS)
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)

@@ -1,6 +1,14 @@
 #include "Account.hpp"
 #include <ctime>
 #include <iostream>
+#include <sstream>
+
+// Permet de convertir un entier en string
+template <typename T> static std::string to_string(const T &value) {
+  std::ostringstream oss;
+  oss << value;
+  return oss.str();
+}
 
 // besoin de redeclare les variables static dans le .cpp
 // (sinon undefined reference)
@@ -97,17 +105,17 @@ void Account::_displayTimestamp(void) {
   std::time_t t = std::time(0);
   std::tm *now = std::localtime(&t);
 
-  std::string year = std::to_string(now->tm_year + 1900);
-  std::string month = std::to_string(now->tm_mon + 1);
-  std::string day = std::to_string(now->tm_mday);
-  std::string hour = std::to_string(now->tm_hour);
-  std::string minute = std::to_string(now->tm_min);
-  std::string second = std::to_string(now->tm_sec);
+  std::string year = to_string(now->tm_year + 1900);
+  std::string month = to_string(now->tm_mon + 1);
+  std::string day = to_string(now->tm_mday);
+  std::string hour = to_string(now->tm_hour);
+  std::string minute = to_string(now->tm_min);
+  std::string second = to_string(now->tm_sec);
 
   // TODO : trouver un moyen plus propre de faire ca (plus c++)
   std::string *all[] = {&month, &day, &hour, &minute, &second};
-  for (std::string *str : all)
-    _add_zero(*str);
+  for (int i = 0; i < 5; i++)
+    _add_zero(*all[i]);
 
   std::cout << "[" << year << month << day << "_" << hour << minute << second
             << "] ";
