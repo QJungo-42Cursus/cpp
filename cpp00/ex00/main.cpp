@@ -1,9 +1,8 @@
-#include <cstring>
 #include <iostream>
 
 int main(int argc, char **argv) {
   if (argc < 2) {
-    std::cout << "Usage: " << argv[0] << " \"sentence\"" << std::endl;
+    std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
     return 0;
   }
 
