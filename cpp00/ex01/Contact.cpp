@@ -40,6 +40,11 @@ static void get_input(std::string &to_fill, std::string name) {
   while (to_fill.empty()) {
     std::cout << "Enter " << name << ": ";
     std::getline(std::cin, to_fill);
+	if ((std::cin.eof() || std::cin.bad()))
+	{
+      std::cout << std::endl << "EOF" << std::endl;
+	  exit (0);
+	}
     if (to_fill.empty())
       std::cout << name << " cannot be empty" << std::endl;
   }
@@ -56,6 +61,11 @@ Contact Contact::fromUserInput() {
     std::string phone;
     std::cout << "Enter phone: ";
     std::getline(std::cin, phone);
+	if (std::cin.eof() || std::cin.bad())
+	{
+      std::cout << std::endl << "EOF" << std::endl;
+	  exit (0);
+	}
     std::stringstream ss(phone);
     if (ss.fail() || !(ss >> phone_number)) {
       std::cout << "Invalid phone number" << std::endl;
@@ -70,6 +80,5 @@ Contact Contact::fromUserInput() {
     contact.phone = phone_number;
   }
   get_input(contact.darkest_secret, "darkest secret");
-
   return contact;
 }
