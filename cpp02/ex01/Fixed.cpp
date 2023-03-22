@@ -2,6 +2,17 @@
 #include <cmath>
 #include <iostream>
 
+/// Debug helper
+static void showbits(unsigned int x) {
+  int i = 0;
+  for (i = (sizeof(int) * 8) - 1; i >= 0; i--) {
+    putchar(x & (1u << i) ? '1' : '0');
+    if (i % 8 == 0)
+      putchar(' ');
+  }
+  printf("\n");
+}
+
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
   // TODO rendre ca reel
   os << fixed.toFloat();
@@ -55,3 +66,18 @@ int Fixed::toInt() const { return (_rawBits); }
 
 // TODO
 float Fixed::toFloat() const { return (_rawBits); }
+
+/* Private methods */
+
+int Fixed::_getFractionalValue() const {
+  int fractionalValue = this->_rawBits;
+  char *puning = (char *)&fractionalValue;
+  return puning[0];
+}
+
+int Fixed::_getIntegerValue() const {
+  int integerValue = this->_rawBits;
+  char *puning = (char *)&integerValue;
+  puning[3] = 0;
+  return integerValue;
+}

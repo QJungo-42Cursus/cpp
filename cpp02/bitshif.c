@@ -6,7 +6,7 @@ void showbits( unsigned int x )
     for (i = (sizeof(int) * 8) - 1; i >= 0; i--)
     {
        putchar(x & (1u << i) ? '1' : '0');
-	   if (i % 4 == 0)
+	   if (i % 8 == 0)
 		  putchar(' ');
     }
     printf("\n");
@@ -59,6 +59,12 @@ int main() {
 		i*=2;
 	}
 	*/
+
+	showbits(256);
+	showbits(255 << 4);
+
+
+	/*
 	new_int_pp(126);
 	new_int_pp(127);
 	new_int_pp(128);
@@ -70,10 +76,22 @@ int main() {
 	new_chars_pp(1, 0, 0, 0);
 
 
+	int chacal = 0;
+	printf("====\n");
+	t_puning	pun;
+	pun.integer = 0;
+	int	*half_pointer = (int *)&(pun.chars[1]);
+	*half_pointer = 1;
+	print_pun(pun);
+	*/
+
+
+	/*
 	printf("size of a char: %lu\n", sizeof(char));
 	printf("size of a int: %lu\n", sizeof(int));
 	printf("size of a float: %lu\n", sizeof(float));
 	printf("size of a long: %lu\n", sizeof(long));
 	printf("size of a `t_puning`: %lu\n", sizeof(t_puning));
+	*/
 }
 
