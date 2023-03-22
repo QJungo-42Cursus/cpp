@@ -19,6 +19,6 @@ int main() {
   std::cout << eude.getEnergyPoints() << std::endl;
   eude.beRepaired(10);
   thierry.guardGate();
-  // delete jack;
+  delete jack;
   return 0;
 }

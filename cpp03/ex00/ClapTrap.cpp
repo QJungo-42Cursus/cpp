@@ -4,19 +4,19 @@
 ClapTrap::ClapTrap()
     : _name("Default"), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
   std::cout << "ClapTrap default constructor called, ";
-  printSpecs();
+  _printSpecs();
 }
 
 ClapTrap::ClapTrap(std::string name)
     : _name(name), _hitPoints(10), _energyPoints(10), _attackDamage(0) {
   std::cout << "ClapTrap constructor called, ";
-  printSpecs();
+  _printSpecs();
 }
 
 ClapTrap::ClapTrap(const ClapTrap &other) {
   *this = other;
   std::cout << "ClapTrap copy constructor called, ";
-  printSpecs();
+  _printSpecs();
 }
 
 ClapTrap::~ClapTrap() {
@@ -32,13 +32,13 @@ ClapTrap &ClapTrap::operator=(const ClapTrap &other) {
     _attackDamage = other._attackDamage;
   }
   std::cout << "ClapTrap assignment operator called, ";
-  printSpecs();
+  _printSpecs();
   return *this;
 }
 
 /* Actions Methods */
 void ClapTrap::attack(const std::string &target) {
-  if (!canAct())
+  if (!_canAct())
     return;
   _energyPoints--;
   std::cout << _name << " attacks " << target << ", causing " << _attackDamage
@@ -58,7 +58,7 @@ void ClapTrap::takeDamage(unsigned int amount) {
 }
 
 void ClapTrap::beRepaired(unsigned int amount) {
-  if (!canAct())
+  if (!_canAct())
     return;
   _energyPoints--;
   _hitPoints += amount;
@@ -66,7 +66,7 @@ void ClapTrap::beRepaired(unsigned int amount) {
             << std::endl;
 }
 
-bool ClapTrap::canAct() const {
+bool ClapTrap::_canAct() const {
   if (_energyPoints < 1) {
     std::cout << _name << " has no energy to attack" << std::endl;
     return false;
@@ -78,8 +78,7 @@ bool ClapTrap::canAct() const {
   return true;
 }
 
-/* Display */
-void ClapTrap::printSpecs() const {
+void ClapTrap::_printSpecs() const {
   std::cout << _name << " has " << _hitPoints << " hit points, "
             << _energyPoints << " energy points and " << _attackDamage
             << " attack damage" << std::endl;

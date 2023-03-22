@@ -4,3 +4,4 @@
 - [ ] ex02
 - [ ] ex03
 
+test dans le bitshift.c

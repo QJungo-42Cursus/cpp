@@ -30,23 +30,23 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
 }
 
 ScavTrap::~ScavTrap() {
-  std::cout << "ScavTrap destructor called for " << COLOR_MAGENTA << _name
-            << COLOR_RESET << std::endl;
+  std::cout << "ScavTrap destructor called for " << color::MAGENTA << _name
+            << color::RESET << std::endl;
 }
 
 /* Member Functions */
 void ScavTrap::guardGate() {
   if (!_canAct("guardGate"))
     return;
-  std::cout << COLOR_MAGENTA << _name << COLOR_RESET
+  std::cout << color::MAGENTA << _name << color::RESET
             << " has entered in Gate keeper mode" << std::endl;
 }
 
 void ScavTrap::attack(std::string const &target) {
   if (!_canAct("attack"))
     return;
-  std::cout << COLOR_MAGENTA << _name << COLOR_RESET
-            << " attacks like a true ScavTrap " << COLOR_BOLD << target
-            << COLOR_RESET << ", causing " << _attackDamage
+  std::cout << color::MAGENTA << _name << color::RESET
+            << " attacks like a true ScavTrap " << color::BOLD << target
+            << color::RESET << ", causing " << _attackDamage
             << " points of damage!" << std::endl;
 }
