@@ -3,6 +3,7 @@
 
 int main() {
   Zombie *zombie = newZombie("KikiOnTheHeap");
+  zombie->announce();
   delete zombie;
   randomChump("KikiOnTheStack");
   return 0;

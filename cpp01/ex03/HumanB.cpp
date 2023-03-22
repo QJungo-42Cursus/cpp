@@ -1,9 +1,9 @@
 #include "HumanB.h"
 
 /* Constructor and Destructor */
-HumanB::HumanB(std::string name) : _name(name), _weapon(nullptr) {}
+HumanB::HumanB(std::string name) :  _weapon(nullptr), _name(name) {}
 HumanB::HumanB(std::string name, Weapon &weapon)
-    : _name(name), _weapon(&weapon) {}
+    :  _weapon(&weapon), _name(name) {}
 HumanB::~HumanB() {}
 
 /* Methods */

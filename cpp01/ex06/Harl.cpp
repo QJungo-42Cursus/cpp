@@ -1,11 +1,18 @@
 #include "Harl.h"
 #include <iostream>
 
+Harl::Harl() {
+  complainFunc[DEBUG] = &Harl::debug;
+  complainFunc[INFO] = &Harl::info;
+  complainFunc[WARNING] = &Harl::warning;
+  complainFunc[ERROR] = &Harl::error;
+}
+
 Harl::Level Harl::_level = Harl::DEBUG;
+
 const std::string Harl::levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 void Harl::setLevel(std::string level) {
-  bool isLevel = false;
   for (int i = 0; i < 4; i++) {
     if (level == Harl::levels[i]) {
       Harl::_level = (Harl::Level)i;
@@ -22,19 +29,19 @@ void Harl::setLevel(std::string level) {
 }
 
 void Harl::debug() const {
-  std::cout << "DEBUG bon ba ca part sur un test quoi" << std::endl;
+  std::cout << "[ DEBUG ]" << std::endl << " bon ba ca part sur un test quoi" << std::endl;
 }
 
 void Harl::info() const {
-  std::cout << "INFO au cas ou le programme a commence" << std::endl;
+  std::cout << "[ INFO ]" << std::endl << "au cas ou le programme a commence" << std::endl;
 }
 
 void Harl::warning() const {
-  std::cout << "WARNING oula. C'est un probleme" << std::endl;
+  std::cout << "[ WARNING ]" << std::endl << "oula. C'est un probleme" << std::endl;
 }
 
 void Harl::error() const {
-  std::cout << "ERROR t srx ?? C'est un gros problem" << std::endl;
+  std::cout << "[ ERROR ]" << std::endl << "t srx ?? C'est un gros problem" << std::endl;
 }
 
 void Harl::complain(std::string level) {

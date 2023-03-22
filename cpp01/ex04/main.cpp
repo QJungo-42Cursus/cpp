@@ -31,7 +31,7 @@ static void sed(std::ifstream &file, std::ofstream &new_file,
   content_file.assign((std::istreambuf_iterator<char>(file)),
                       (std::istreambuf_iterator<char>()));
   int pos = 0;
-  while ((pos = content_file.find(string1, pos)) != std::string::npos) {
+  while ((pos = content_file.find(string1, pos)) != (int)std::string::npos) {
     content_file.erase(pos, string1.length());
     content_file.insert(pos, string2);
   }

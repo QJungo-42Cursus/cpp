@@ -13,7 +13,7 @@ private:
   void warning(void) const;
   void error(void) const;
   void (Harl::*complainFunc[4])(void) const;
-  const std::string levels[4] = {"debug", "info", "warning", "error"};
+  static const std::string levels[4];
   enum Level { DEBUG, INFO, WARNING, ERROR };
 };
 

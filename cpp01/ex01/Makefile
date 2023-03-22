@@ -4,8 +4,10 @@ RM =			rm -f
 SRCS =			Zombie.cpp main.cpp zombieHorde.cpp
 
 CFLAGS =		-Wall -Wextra -Werror -std=c++98 -pedantic-errors
+
 %.o: %.cpp Makefile
 	$(CC) $(CFLAGS) -c $< -o $@
+
 OBJS =			$(SRCS:.cpp=.o)
 
 all: $(NAME)

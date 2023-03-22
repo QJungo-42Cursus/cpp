@@ -1,6 +1,8 @@
 #include "Harl.h"
 #include <iostream>
 
+const std::string Harl::levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+
 Harl::Harl() {
   complainFunc[DEBUG] = &Harl::debug;
   complainFunc[INFO] = &Harl::info;
@@ -9,19 +11,19 @@ Harl::Harl() {
 }
 
 void Harl::debug() const {
-  std::cout << "DEBUG bon ba ca part sur un test quoi" << std::endl;
+  std::cout << "DEBUG: bon ba ca part sur un test quoi" << std::endl;
 }
 
 void Harl::info() const {
-  std::cout << "INFO au cas ou le programme a commence" << std::endl;
+  std::cout << "INFO: au cas ou le programme a commence" << std::endl;
 }
 
 void Harl::warning() const {
-  std::cout << "WARNING oula. C'est un probleme" << std::endl;
+  std::cout << "WARNING: oula. C'est un probleme" << std::endl;
 }
 
 void Harl::error() const {
-  std::cout << "ERROR t srx ?? C'est un gros problem" << std::endl;
+  std::cout << "ERROR: t srx ?? C'est un gros problem" << std::endl;
 }
 
 void Harl::complain(std::string level) {
