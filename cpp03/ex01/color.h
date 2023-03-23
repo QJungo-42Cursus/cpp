@@ -2,6 +2,19 @@
 #ifndef COLOR_H
 # define COLOR_H
 
+class Color{
+public:
+
+    static const std::string& RED(void)
+    {
+		static const char* str = "\033[1;31m";
+        return str;
+    }
+
+private:
+	Color();
+}
+
 namespace color {
 	const char* RED = "\033[1;31m";
 	const char* GREEN = "\033[1;32m";

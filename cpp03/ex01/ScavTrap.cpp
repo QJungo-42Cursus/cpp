@@ -1,5 +1,6 @@
 #include "ScavTrap.h"
 #include <iostream>
+#include "Color.h"
 
 /* Constructors and Destructors */
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {
@@ -30,23 +31,23 @@ ScavTrap::ScavTrap(const ScavTrap &other) : ClapTrap(other) {
 }
 
 ScavTrap::~ScavTrap() {
-  std::cout << "ScavTrap destructor called for " << color::MAGENTA << _name
-            << color::RESET << std::endl;
+  std::cout << "ScavTrap destructor called for " << Color::MAGENTA << _name
+            << Color::RESET << std::endl;
 }
 
 /* Member Functions */
 void ScavTrap::guardGate() {
   if (!_canAct("guardGate"))
     return;
-  std::cout << color::MAGENTA << _name << color::RESET
+  std::cout << Color::MAGENTA << _name << Color::RESET
             << " has entered in Gate keeper mode" << std::endl;
 }
 
 void ScavTrap::attack(std::string const &target) {
   if (!_canAct("attack"))
     return;
-  std::cout << color::MAGENTA << _name << color::RESET
-            << " attacks like a true ScavTrap " << color::BOLD << target
-            << color::RESET << ", causing " << _attackDamage
+  std::cout << Color::MAGENTA << _name << Color::RESET
+            << " attacks like a true ScavTrap " << Color::BOLD << target
+            << Color::RESET << ", causing " << _attackDamage
             << " points of damage!" << std::endl;
 }
