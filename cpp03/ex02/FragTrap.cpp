@@ -1,5 +1,6 @@
 #include "FragTrap.h"
 #include <iostream>
+#include "color.h"
 
 /* Constructors and Destructors */
 

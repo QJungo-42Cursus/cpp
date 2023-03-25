@@ -8,7 +8,7 @@ class DiamondTrap : public FragTrap, public ScavTrap {
 public:
   DiamondTrap(std::string name);
   DiamondTrap(DiamondTrap const &other);
-  ~DiamondTrap();
+  virtual ~DiamondTrap();
 
   /* Operators Overload */
   DiamondTrap &operator=(DiamondTrap const &other);

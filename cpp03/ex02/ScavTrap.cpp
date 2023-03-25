@@ -1,5 +1,6 @@
 #include "ScavTrap.h"
 #include <iostream>
+#include "color.h"
 
 /* Constructors and Destructors */
 ScavTrap::ScavTrap(std::string name) : ClapTrap(name) {

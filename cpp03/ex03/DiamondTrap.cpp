@@ -1,4 +1,5 @@
 #include "DiamondTrap.h"
+#include "color.h"
 #include <iostream>
 
 /* Constructors and Destructors */

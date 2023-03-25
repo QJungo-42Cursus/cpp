@@ -9,7 +9,7 @@ public:
   /* Constructors and Destructors */
   FragTrap(std::string name);
   FragTrap(const FragTrap &other);
-  ~FragTrap();
+  virtual ~FragTrap();
 
   /* Operators Overload */
   FragTrap &operator=(const FragTrap &other);

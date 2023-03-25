@@ -1,4 +1,5 @@
 #include "ClapTrap.h"
+#include "color.h"
 
 /* Constructors and Destructors */
 ClapTrap::ClapTrap()
