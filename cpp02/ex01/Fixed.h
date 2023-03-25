@@ -27,12 +27,6 @@ private:
   int _rawBits;
   /// nombre de bits de la partie fractionnaire
   static const int _fractionalBits = 8;
-
-public: // TODO private
-  int _getFractionalValue() const;
-  int _getIntegerValue() const;
-
-  static const int _intMax = 256 * 256 * 256 - 1;
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
