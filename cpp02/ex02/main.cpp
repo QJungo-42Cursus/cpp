@@ -38,5 +38,7 @@ int main() {
     std::cout << a << std::endl;
     a = a + 1;
     std::cout << a << std::endl;
+
+	std::cout << "plus petit entre " << a << " et " << b << ": " << Fixed::min(a, b) << std::endl;
   }
 }

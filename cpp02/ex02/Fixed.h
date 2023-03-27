@@ -23,9 +23,11 @@ public:
   bool operator<=(Fixed const &rhs) const;
   bool operator==(Fixed const &rhs) const;
   bool operator!=(Fixed const &rhs) const;
+  // pre-incrementation
   Fixed &operator++();
-  Fixed operator++(int);
   Fixed &operator--();
+  // post-incrementation
+  Fixed operator++(int);
   Fixed operator--(int);
 
   /* Getters and setters */
