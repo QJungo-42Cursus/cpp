@@ -32,4 +32,9 @@ int main() {
   wrongCat->makeSound();
   delete wrongCat;
   printEndl();
+
+  {
+	  const WrongAnimal* i = new WrongCat();
+	  i->makeSound();
+  }
 }

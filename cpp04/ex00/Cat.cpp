@@ -22,3 +22,4 @@ Cat &Cat::operator=(const Cat &other) {
 
 /* Methods override */
 void Cat::makeSound() const { std::cout << "Meow!" << std::endl; }
+

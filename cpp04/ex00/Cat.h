@@ -7,7 +7,7 @@ public:
   /* Constructor and Destructor */
   Cat();
   Cat(const Cat &other);
-  ~Cat();
+  virtual ~Cat();
 
   /* Operator Overloads */
   Cat &operator=(const Cat &other);

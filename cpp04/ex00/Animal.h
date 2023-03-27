@@ -7,7 +7,7 @@ public:
   /* Constructor and Destructor */
   Animal();
   Animal(const Animal &other);
-  ~Animal();
+  virtual ~Animal();
 
   /* Operator Overload */
   Animal &operator=(const Animal &other);

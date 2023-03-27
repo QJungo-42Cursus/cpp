@@ -7,7 +7,7 @@ public:
   /* Constructor and Destructor */
   Dog();
   Dog(const Dog &other);
-  ~Dog();
+  virtual ~Dog();
 
   /* Methods override */
   void makeSound() const;
