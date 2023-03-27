@@ -6,8 +6,11 @@
 class Brain {
 public:
   Brain();
-  ~Brain();
-  void think();
+  virtual ~Brain();
+
+  // TODO copilien
+
+
   std::string ideas[100];
 };
 

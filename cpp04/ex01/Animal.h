@@ -1,25 +1,29 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
-#include "Brain.h"
 #include <iostream>
+#include "Brain.h"
 
 class Animal {
 public:
+  /* Constructor and Destructor */
   Animal();
   Animal(const Animal &other);
   virtual ~Animal();
 
-  std::string getType() const; // const at the end mean that the function will
-                               // not modify the object
-  virtual void makeSound() const; // virtual means that the function can be
-                                  // overriden in a derived class
-
   /* Operator Overload */
   Animal &operator=(const Animal &other);
 
+  /* Getters */
+  std::string getType() const;
+
+  /* Methods */
+  virtual void makeSound() const;
+
 protected:
-  Brain *brain;
   std::string type;
+
+private:
+  Brain *_brain;
 };
 
 #endif /* ANIMAL_H */
