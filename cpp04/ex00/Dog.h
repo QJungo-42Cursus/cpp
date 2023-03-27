@@ -9,6 +9,9 @@ public:
   Dog(const Dog &other);
   virtual ~Dog();
 
+  /* Operator Overloads */
+  Dog &operator=(const Dog &other);
+
   /* Methods override */
   void makeSound() const;
 };

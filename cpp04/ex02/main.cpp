@@ -1,4 +1,4 @@
-#include "Animal.h"
+#include "AAnimal.h"
 #include "Cat.h"
 #include "Dog.h"
 #include "WrongCat.h"
@@ -6,17 +6,17 @@
 
 int main() {
   /*
-  const Animal *meta = new Animal();
+  const AAnimal *meta = new AAnimal();
   meta->makeSound();
   delete meta;
   */
 
-  const Animal *i = new Cat();
+  const AAnimal *i = new Cat();
   std::cout << i->getType() << " " << std::endl;
   i->makeSound(); // will output the cat sound!
   delete i;
 
-  const Animal *j = new Dog();
+  const AAnimal *j = new Dog();
   std::cout << j->getType() << " " << std::endl;
   j->makeSound();
   delete j;
@@ -25,7 +25,7 @@ int main() {
   const WrongCat *wrongCat = new WrongCat();
   wrongCat->makeSound();
   delete wrongCat;
-  Animal *animals[10];
+  AAnimal *animals[10];
 
   for (int i = 0; i < 10; i++) {
     if (i % 2 == 0)

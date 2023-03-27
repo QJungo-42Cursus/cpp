@@ -1,9 +1,9 @@
-NAME =     	animals
+NAME =     	burn
 CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
 RM =		rm -f
 
-SRCS =		main.cpp Animal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
+SRCS =		main.cpp AAnimal.cpp Dog.cpp Cat.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJS =		$(SRCS:.cpp=.o)
 
 all: $(NAME)
@@ -22,8 +22,11 @@ re: fclean all
 t: all
 	./$(NAME)
 
+SAN =	-fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all \
+		-fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
+		-fno-sanitize=null -fno-sanitize=alignment
 san:
-	$(CC) -g -fsanitize=address $(SRCS) -o $(NAME)
+	$(CC) -g $(SAN) $(SRCS) -o $(NAME)
 	./$(NAME)
 
 .PHONY: all clean fclean re

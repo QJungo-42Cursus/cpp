@@ -14,6 +14,13 @@ Dog::Dog(const Dog &other) {
   type = other.type;
 }
 
+/* Operator Overloads */
+Dog &Dog::operator=(const Dog &other) {
+  std::cout << "Dog assignment operator called" << std::endl;
+  type = other.type;
+  return *this;
+}
+
 Dog::~Dog() { std::cout << "Dog destructor called" << std::endl; }
 
 /* Methods override */

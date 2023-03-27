@@ -1,17 +1,16 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
-#include <iostream>
 #include "Brain.h"
+#include <iostream>
 
-class Animal {
+class AAnimal {
 public:
   /* Constructor and Destructor */
-  Animal();
-  Animal(const Animal &other);
-  virtual ~Animal();
+  AAnimal(const AAnimal &other);
+  virtual ~AAnimal();
 
   /* Operator Overload */
-  Animal &operator=(const Animal &other);
+  AAnimal &operator=(const AAnimal &other);
 
   /* Getters */
   std::string getType() const;
@@ -21,6 +20,7 @@ public:
 
 protected:
   std::string type;
+  AAnimal();
 };
 
 #endif /* ANIMAL_H */

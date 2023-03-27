@@ -1,6 +1,7 @@
 #ifndef CAT_H
 #define CAT_H
 #include "Animal.h"
+#include "Brain.h"
 
 class Cat : public Animal {
 public:
@@ -14,6 +15,10 @@ public:
 
   /* Methods override */
   void makeSound() const;
+
+
+private:
+  Brain *_brain;
 };
 
 #endif /* CAT_H */

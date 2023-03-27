@@ -5,9 +5,15 @@
 
 class Brain {
 public:
+	// Constructors
   Brain();
-  ~Brain();
-  void think();
+  virtual ~Brain();
+  Brain(const Brain &other);
+
+  /* Operator Overload */
+  Brain &operator=(const Brain &other);
+
+  // attributes
   std::string ideas[100];
 };
 

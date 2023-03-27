@@ -5,7 +5,6 @@
 #include <iostream>
 
 int main() {
-  /*
   const Animal *meta = new Animal();
   meta->makeSound();
   delete meta;
@@ -20,11 +19,10 @@ int main() {
   j->makeSound();
   delete j;
 
-  // TODO devrait afficher le son du wrong animal ?
   const WrongCat *wrongCat = new WrongCat();
   wrongCat->makeSound();
   delete wrongCat;
-  */
+
   Animal *animals[10];
 
   for (int i = 0; i < 10; i++) {

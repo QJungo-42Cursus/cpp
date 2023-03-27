@@ -22,8 +22,11 @@ re: fclean all
 t: all
 	./$(NAME)
 
+SAN =	-fsanitize=address -fsanitize=undefined -fno-sanitize-recover=all \
+		-fsanitize=float-divide-by-zero -fsanitize=float-cast-overflow \
+		-fno-sanitize=null -fno-sanitize=alignment
 san:
-	$(CC) -g -fsanitize=address $(SRCS) -o $(NAME)
+	$(CC) -g $(SAN) $(SRCS) -o $(NAME)
 	./$(NAME)
 
 .PHONY: all clean fclean re
