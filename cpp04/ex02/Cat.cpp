@@ -15,8 +15,8 @@ Cat::Cat(const Cat &other) {
 }
 
 Cat::~Cat() {
-	delete this->_brain;
-	std::cout << "Cat destructor called" << std::endl; 
+  delete this->_brain;
+  std::cout << "Cat destructor called" << std::endl;
 }
 
 /* Operator Overloads */
@@ -29,4 +29,3 @@ Cat &Cat::operator=(const Cat &other) {
 
 /* Methods override */
 void Cat::makeSound() const { std::cout << "Meow!" << std::endl; }
-

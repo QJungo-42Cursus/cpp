@@ -34,7 +34,7 @@ int main() {
   printEndl();
 
   {
-	  const WrongAnimal* i = new WrongCat();
-	  i->makeSound();
+    const WrongAnimal *i = new WrongCat();
+    i->makeSound();
   }
 }

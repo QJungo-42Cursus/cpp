@@ -1,11 +1,10 @@
 #ifndef BRAIN_H
 #define BRAIN_H
-
 #include <iostream>
 
 class Brain {
 public:
-	// Constructors
+  // Constructors
   Brain();
   virtual ~Brain();
   Brain(const Brain &other);

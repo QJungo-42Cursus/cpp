@@ -16,7 +16,6 @@ public:
   /* Methods override */
   void makeSound() const;
 
-
 private:
   Brain *_brain;
 };

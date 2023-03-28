@@ -24,12 +24,9 @@ Dog &Dog::operator=(const Dog &other) {
   return *this;
 }
 
-
-// TODO assignation !!!
-
 Dog::~Dog() {
-	delete this->_brain;
-	std::cout << "Dog destructor called" << std::endl;
+  delete this->_brain;
+  std::cout << "Dog destructor called" << std::endl;
 }
 
 /* Methods override */

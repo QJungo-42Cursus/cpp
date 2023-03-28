@@ -17,7 +17,7 @@ WrongCat::WrongCat(const WrongCat &other) {
 }
 
 /* Operator Overload */
-WrongCat &WrongCat::operator=(const WrongCat&other) {
+WrongCat &WrongCat::operator=(const WrongCat &other) {
   std::cout << "Wrong Cat assignation operator called" << std::endl;
   if (this != &other) {
     type = other.type;

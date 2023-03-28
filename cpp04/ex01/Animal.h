@@ -1,7 +1,7 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
-#include <iostream>
 #include "Brain.h"
+#include <iostream>
 
 class Animal {
 public:

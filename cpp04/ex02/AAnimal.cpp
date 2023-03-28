@@ -23,6 +23,3 @@ AAnimal &AAnimal::operator=(const AAnimal &other) {
 
 /* Getters */
 std::string AAnimal::getType() const { return type; }
-
-/* Methods */
-void AAnimal::makeSound() const { std::cout << "AAnimal sound" << std::endl; }
