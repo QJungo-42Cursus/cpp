@@ -32,13 +32,13 @@ public:
     virtual const char *what() const throw() { return "Grade too low"; }
   };
 
+  static const int LOWEST_GRADE = 150;
+  static const int HIGHEST_GRADE = 1;
+
 private:
   /* data members */
   const std::string _name;
   int _grade;
-
-  static const int LOWEST_GRADE = 150;
-  static const int HIGHEST_GRADE = 1;
 };
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs);

@@ -2,9 +2,10 @@
 #define FORM_H
 #include <iostream>
 
-class Bureaucrat;
+// class Bureaucrat;
 
-class Form {
+class Form
+{
 public:
   /* Constructors and destructor */
   Form();
@@ -26,10 +27,12 @@ public:
   void beSigned(Bureaucrat const &bureaucrat);
 
   /* exceptions */
-  struct GradeTooHighException : public std::exception {
+  struct GradeTooHighException : public std::exception
+  {
     virtual const char *what() const throw() { return "Grade too high"; }
   };
-  struct GradeTooLowException : public std::exception {
+  struct GradeTooLowException : public std::exception
+  {
     virtual const char *what() const throw() { return "Grade too low"; }
   };
 

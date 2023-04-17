@@ -9,13 +9,16 @@ Form::Form()
 Form::Form(std::string const &name, int const gradeToSign,
            int const gradeToExecute)
     : _name(name), _signed(false), _gradeToSign(gradeToSign),
-      _gradeToExecute(gradeToExecute) {
-  if (gradeToSign < 1 || gradeToExecute < 1) {
+      _gradeToExecute(gradeToExecute)
+{
+  if (gradeToSign < Bureaucrat::HIGHEST_GRADE || gradeToExecute < Bureaucrat::HIGHEST_GRADE)
+  {
     throw Form::GradeTooHighException();
-  } else if (gradeToSign > 150 || gradeToExecute > 150) {
+  }
+  else if (gradeToSign > Bureaucrat::LOWEST_GRADE || gradeToExecute > Bureaucrat::LOWEST_GRADE)
+  {
     throw Form::GradeTooLowException();
   }
-  _signed = false;
 }
 
 Form::Form(Form const &src)
@@ -25,14 +28,17 @@ Form::Form(Form const &src)
 Form::~Form() {}
 
 /* Operators overloads */
-Form &Form::operator=(Form const &rhs) {
-  if (this != &rhs) {
+Form &Form::operator=(Form const &rhs)
+{
+  if (this != &rhs)
+  {
     _signed = rhs._signed; // c'est le seul qui n'est pas const
   }
   return *this;
 }
 
-std::ostream &operator<<(std::ostream &o, Form const &rhs) {
+std::ostream &operator<<(std::ostream &o, Form const &rhs)
+{
   o << "Form \"" << rhs.getName() << "\" is "
     << (rhs.getIsSigned() ? "signed" : "not signed");
   return o;
@@ -46,8 +52,10 @@ int Form::getGradeToExecute() const { return _gradeToExecute; }
 const std::string &Form::getTarget() const { return _target; }
 
 /* Setters */
-void Form::beSigned(Bureaucrat const &bureaucrat) {
-  if (bureaucrat.getGrade() > _gradeToSign) {
+void Form::beSigned(Bureaucrat const &bureaucrat)
+{
+  if (bureaucrat.getGrade() > _gradeToSign)
+  {
     throw Form::GradeTooLowException();
   }
   _signed = true;

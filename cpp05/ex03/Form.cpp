@@ -9,13 +9,16 @@ Form::Form()
 Form::Form(std::string const &name, int const gradeToSign,
            int const gradeToExecute)
     : _name(name), _signed(false), _gradeToSign(gradeToSign),
-      _gradeToExecute(gradeToExecute) {
-  if (gradeToSign < 1 || gradeToExecute < 1) {
+      _gradeToExecute(gradeToExecute)
+{
+  if (gradeToSign < Bureaucrat::HIGHEST_GRADE || gradeToExecute < Bureaucrat::HIGHEST_GRADE)
+  {
     throw Form::GradeTooHighException();
-  } else if (gradeToSign > 150 || gradeToExecute > 150) {
+  }
+  else if (gradeToSign > Bureaucrat::LOWEST_GRADE || gradeToExecute > Bureaucrat::LOWEST_GRADE)
+  {
     throw Form::GradeTooLowException();
   }
-  _signed = false;
 }
 
 Form::Form(Form const &src)
