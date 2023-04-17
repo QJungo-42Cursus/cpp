@@ -3,7 +3,8 @@
 #include "Form.h"
 #include <iostream>
 
-class Intern {
+class Intern
+{
 public:
   /* Constructors and Destructors */
   Intern();
@@ -17,7 +18,8 @@ public:
   Form *makeForm(std::string const &form_name, std::string const &target) const;
 
   /* exceptions */
-  struct UnexistingFormNameException : public std::exception {
+  struct UnexistingFormNameException : public std::exception
+  {
     virtual const char *what() const throw() { return "This form name's doesn't exist"; }
   };
 };

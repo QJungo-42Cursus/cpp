@@ -2,7 +2,7 @@ NAME =     	admin
 CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
 RM =		rm -f
-
+OBJS =		$(SRCS:.cpp=.o)
 SRCS =		main.cpp \
 			Bureaucrat.cpp \
 			Form.cpp \
@@ -11,7 +11,6 @@ SRCS =		main.cpp \
 			PresidentialPardonForm.cpp \
 			Intern.cpp
 			
-OBJS =		$(SRCS:.cpp=.o)
 
 all: $(NAME)
 

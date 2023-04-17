@@ -17,6 +17,9 @@ public:
   /* methods */
   void execute(Bureaucrat const &executor) const;
 
+  static const int defaultGradeToSign = 25;
+  static const int defaultGradeToExecute = 5;
+
 private:
   PresidentialPardonForm();
 };

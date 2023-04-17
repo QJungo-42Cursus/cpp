@@ -28,14 +28,17 @@ Form::Form(Form const &src)
 Form::~Form() {}
 
 /* Operators overloads */
-Form &Form::operator=(Form const &rhs) {
-  if (this != &rhs) {
+Form &Form::operator=(Form const &rhs)
+{
+  if (this != &rhs)
+  {
     _signed = rhs._signed; // c'est le seul qui n'est pas const
   }
   return *this;
 }
 
-std::ostream &operator<<(std::ostream &o, Form const &rhs) {
+std::ostream &operator<<(std::ostream &o, Form const &rhs)
+{
   o << "Form \"" << rhs.getName() << "\" is "
     << (rhs.getIsSigned() ? "signed" : "not signed");
   return o;
@@ -49,8 +52,10 @@ int Form::getGradeToExecute() const { return _gradeToExecute; }
 const std::string &Form::getTarget() const { return _target; }
 
 /* Setters */
-void Form::beSigned(Bureaucrat const &bureaucrat) {
-  if (bureaucrat.getGrade() > _gradeToSign) {
+void Form::beSigned(Bureaucrat const &bureaucrat)
+{
+  if (bureaucrat.getGrade() > _gradeToSign)
+  {
     throw Form::GradeTooLowException();
   }
   _signed = true;

@@ -4,9 +4,12 @@
 
 class Bureaucrat;
 
-class Form {
+class Form
+{
 public:
   /* Constructors and destructor */
+  Form();
+  Form(std::string const &name, int const gradeToSign, int const gradeToExecute);
   Form(Form const &src);
   virtual ~Form();
 
@@ -27,24 +30,26 @@ public:
   virtual void execute(Bureaucrat const &executor) const = 0;
 
   /* exceptions */
-  struct GradeTooHighException : public std::exception {
+  struct GradeTooHighException : public std::exception
+  {
     virtual const char *what() const throw() { return "Grade too high"; }
   };
-  struct GradeTooLowException : public std::exception {
+  struct GradeTooLowException : public std::exception
+  {
     virtual const char *what() const throw() { return "Grade too low"; }
-  };  
-  struct NotSignedException : public std::exception {
+  };
+  struct NotSignedException : public std::exception
+  {
     virtual const char *what() const throw() { return "Form not signed"; }
   };
 
-protected:
-  Form();
-  Form(std::string const &name, int const gradeToSign, int const gradeToExecute);
+private:
   const std::string _name;
   const int _gradeToSign;
   const int _gradeToExecute;
   bool _signed;
 
+protected:
   std::string _target;
 };
 
