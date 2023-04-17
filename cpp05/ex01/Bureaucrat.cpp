@@ -1,14 +1,16 @@
 #include "Bureaucrat.h"
 
 /* Constructors and Destructors */
-Bureaucrat::Bureaucrat() : _name("has_no_name"), _grade(150) {}
+Bureaucrat::Bureaucrat() : _name("has_no_name"), _grade(LOWEST_GRADE) {}
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade)
-    : _name(name), _grade(grade) {
+    : _name(name)
+{
   if (grade < HIGHEST_GRADE)
     throw Bureaucrat::GradeTooHighException();
   if (grade > LOWEST_GRADE)
     throw Bureaucrat::GradeTooLowException();
+  _grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
@@ -21,32 +23,48 @@ const std::string &Bureaucrat::getName() const { return _name; }
 int Bureaucrat::getGrade() const { return _grade; }
 
 /* Modifiers */
-void Bureaucrat::incrementGrade() {
+void Bureaucrat::incrementGrade()
+{
   if (_grade == HIGHEST_GRADE)
     throw Bureaucrat::GradeTooHighException();
   _grade--;
 }
 
-void Bureaucrat::decrementGrade() {
+void Bureaucrat::decrementGrade()
+{
   if (_grade == LOWEST_GRADE)
     throw Bureaucrat::GradeTooLowException();
   _grade++;
 }
 
 /* Methods */
-void Bureaucrat::signForm(Form &form) const {
-  try {
+void Bureaucrat::signForm(Form &form) const
+{
+  try
+  {
     form.beSigned(*this);
     std::cout << _name << " signs Form \"" << form.getName() << "\""
               << std::endl;
-  } catch (std::exception &e) {
+  }
+  catch (std::exception &e)
+  {
     std::cout << _name << " cannot sign " << form.getName() << " because "
               << e.what() << std::endl;
   }
 }
 
 /* Operators overloads */
-std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs) {
+std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs)
+{
   os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
   return os;
+}
+
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
+{
+  if (this != &rhs)
+  {
+    this->_grade = rhs._grade;
+  }
+  return *this;
 }

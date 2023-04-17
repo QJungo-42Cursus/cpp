@@ -2,7 +2,8 @@
 #define BUREAUCRAT_H
 #include <iostream>
 
-class Bureaucrat {
+class Bureaucrat
+{
 public:
   /* Constructors and Destructors */
   Bureaucrat();
@@ -22,10 +23,12 @@ public:
   void decrementGrade();
 
   /* exceptions */
-  struct GradeTooHighException : public std::exception {
+  struct GradeTooHighException : public std::exception
+  {
     virtual const char *what() const throw() { return "Grade too high"; }
   };
-  struct GradeTooLowException : public std::exception {
+  struct GradeTooLowException : public std::exception
+  {
     virtual const char *what() const throw() { return "Grade too low"; }
   };
 

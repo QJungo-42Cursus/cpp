@@ -1,14 +1,15 @@
 #include "Bureaucrat.h"
 
 /* Constructors and Destructors */
-Bureaucrat::Bureaucrat() : _name("has_no_name"), _grade(150) {}
+Bureaucrat::Bureaucrat() : _name("has_no_name"), _grade(LOWEST_GRADE) {}
 
 Bureaucrat::Bureaucrat(std::string const &name, int grade)
-    : _name(name), _grade(grade) {
+    : _name(name) {
   if (grade < HIGHEST_GRADE)
     throw Bureaucrat::GradeTooHighException();
   if (grade > LOWEST_GRADE)
     throw Bureaucrat::GradeTooLowException();
+  _grade = grade;
 }
 
 Bureaucrat::Bureaucrat(Bureaucrat const &src)
@@ -37,4 +38,13 @@ void Bureaucrat::decrementGrade() {
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs) {
   os << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
   return os;
+}
+
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &rhs)
+{
+  if (this != &rhs)
+  {
+    this->_grade = rhs._grade;
+  }
+  return *this;
 }
