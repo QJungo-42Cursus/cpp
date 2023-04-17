@@ -17,6 +17,9 @@ public:
   /* methods */
   void execute(Bureaucrat const &executor) const;
 
+  static const int defaultGradeToSign = 72;
+  static const int defaultGradeToExecute = 45;
+
 private:
   RobotomyRequestForm();
 };

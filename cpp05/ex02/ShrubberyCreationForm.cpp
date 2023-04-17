@@ -2,13 +2,14 @@
 #include <fstream>
 
 /* Constructors and destructor */
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : 
-Form("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : Form("ShrubberyCreationForm", defaultGradeToSign, defaultGradeToExecute)
+{
   this->_target = target;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other)
-    : Form(other) {
+    : Form(other)
+{
   this->_target = other._target;
 }
 
@@ -16,29 +17,36 @@ ShrubberyCreationForm::~ShrubberyCreationForm() {}
 
 /* Overload Operators */
 ShrubberyCreationForm &
-ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
-  if (this != &rhs) {
+ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs)
+{
+  if (this != &rhs)
+  {
     this->_target = rhs._target;
   }
   return *this;
 }
 
 /* Methods */
-void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
-  if (!this->getIsSigned()) {
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const
+{
+  if (!this->getIsSigned())
+  {
     throw NotSignedException();
   }
-  if (this->getGradeToExecute() < executor.getGrade()) {
+  if (this->getGradeToExecute() < executor.getGrade())
+  {
     throw GradeTooLowException();
   }
   std::string filename = getName() + "_shrubbery";
   std::ofstream new_file;
-  new_file.open(filename,  std::ios::out);
-  if (!new_file.good()) {
+  new_file.open(filename, std::ios::out);
+  if (!new_file.good())
+  {
     std::cerr << "Error creating file " << filename << std::endl;
     exit(1);
   }
-  if (!new_file.is_open()) {
+  if (!new_file.is_open())
+  {
     std::cerr << "Error opening file " << filename << std::endl;
     exit(1);
   }
