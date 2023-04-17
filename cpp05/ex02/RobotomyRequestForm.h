@@ -1,24 +1,24 @@
-#ifndef SHRUBBERYCREATIONFORM_H
-#define SHRUBBERYCREATIONFORM_H
+#ifndef RobotomyRequestForm_H
+#define RobotomyRequestForm_H
 #include "Bureaucrat.h"
 #include "Form.h"
 #include <iostream>
 
-class ShrubberyCreationForm : public Form {
+class RobotomyRequestForm : public Form {
 public:
   /* Constructors and destructor */
-  ShrubberyCreationForm(std::string const &target);
-  ShrubberyCreationForm(const ShrubberyCreationForm &other);
-  virtual ~ShrubberyCreationForm();
+  RobotomyRequestForm(std::string const &target);
+  RobotomyRequestForm(const RobotomyRequestForm &other);
+  virtual ~RobotomyRequestForm();
 
   /* Overload Operators */
-  ShrubberyCreationForm &operator=(const ShrubberyCreationForm &rhs);
+  RobotomyRequestForm &operator=(const RobotomyRequestForm &rhs);
 
   /* methods */
   void execute(Bureaucrat const &executor) const;
 
 private:
-  ShrubberyCreationForm();
+  RobotomyRequestForm();
 };
 
-#endif /* SHRUBBERYCREATIONFORM_H */
+#endif /* RobotomyRequestForm_H */

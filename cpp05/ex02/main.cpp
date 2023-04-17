@@ -36,5 +36,10 @@ int main() {
     c.executeForm(*form);
   } catch (std::exception &e) {
     std::cout << e.what() << std::endl;
+  } 
+  try {
+    b.executeForm(*form);
+  } catch (std::exception &e) {
+    std::cout << e.what() << std::endl;
   }
 }

@@ -32,6 +32,9 @@ public:
   };
   struct GradeTooLowException : public std::exception {
     virtual const char *what() const throw() { return "Grade too low"; }
+  };  
+  struct NotSignedException : public std::exception {
+    virtual const char *what() const throw() { return "Form not signed"; }
   };
 
 protected:

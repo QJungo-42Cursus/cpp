@@ -1,7 +1,8 @@
 #include "RobotomyRequestForm.h"
 
 /* Constructors and destructor */
-RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : Form("RobotomyRequestForm", 145, 137) {
+RobotomyRequestForm::RobotomyRequestForm(std::string const &target) : 
+Form("RobotomyRequestForm", 72, 45) {
   this->_target = target;
 }
 
@@ -21,13 +22,20 @@ RobotomyRequestForm::operator=(const RobotomyRequestForm &rhs) {
   return *this;
 }
 
+#include <cstdlib>
+
 /* Methods */
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const {
   if (!this->getIsSigned()) {
-    throw GradeTooHighException();
+    throw NotSignedException();
   }
   if (this->getGradeToExecute() < executor.getGrade()) {
     throw GradeTooLowException();
   }
-  // TODO do something
+  std::cout << "[Bruits de perceuse...]" << std::endl;
+  if (rand() % 2) {
+    std::cout << _target << " was robotomised." << std::endl;
+  } else {
+    std::cout << _target << " failed to be robotomised !" << std::endl;
+  }
 }
