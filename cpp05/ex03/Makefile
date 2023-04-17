@@ -25,11 +25,4 @@ fclean: clean
 
 re: fclean all
 
-t: all
-	./$(NAME)
-
-san:
-	$(CC) -g -fsanitize=address $(SRCS) -o $(NAME)
-	./$(NAME)
-
 .PHONY: all clean fclean re

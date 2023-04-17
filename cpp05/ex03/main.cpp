@@ -12,6 +12,14 @@ int main()
 {
   Intern someRandomIntern;
   Form *rrf;
+  try
+  {
+    rrf = someRandomIntern.makeForm("robotomy. request", "Bender");
+  }
+  catch (std::exception &e)
+  {
+    std::cout << e.what() << std::endl;
+  }
   rrf = someRandomIntern.makeForm("robotomy request", "Bender");
   std::cout << *rrf << std::endl;
 
@@ -45,6 +53,8 @@ int main()
   {
     std::cout << e.what() << std::endl;
   }
+
+  delete rrf;
 
   return 0;
 }
