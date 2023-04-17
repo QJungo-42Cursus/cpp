@@ -2,7 +2,7 @@
 #define FORM_H
 #include <iostream>
 
-// class Bureaucrat;
+class Bureaucrat;
 
 class Form
 {
