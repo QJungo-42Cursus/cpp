@@ -24,6 +24,7 @@ public:
 
   /* Methods */
   void signForm(Form &form) const;
+  void executeForm(Form const &form);
 
   /* exceptions */
   struct GradeTooHighException : public std::exception {
@@ -38,8 +39,8 @@ private:
   const std::string _name;
   int _grade;
 
-  /* Enums */
-  enum Grade { LOWEST = 150, HIGHEST = 1 };
+  static const int LOWEST_GRADE = 150;
+  static const int HIGHEST_GRADE = 1;
 };
 
 std::ostream &operator<<(std::ostream &os, Bureaucrat const &rhs);

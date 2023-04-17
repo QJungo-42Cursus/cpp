@@ -1,13 +1,7 @@
 #include "ShrubberyCreationForm.h"
 
 /* Constructors and destructor */
-ShrubberyCreationForm::ShrubberyCreationForm()
-    : Form("ShrubberyCreationForm", 145, 137) {
-  this->_target = "default";
-}
-
-ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target)
-    : Form("ShrubberyCreationForm", 145, 137) {
+ShrubberyCreationForm::ShrubberyCreationForm(std::string const &target) : Form("ShrubberyCreationForm", 145, 137) {
   this->_target = target;
 }
 
@@ -27,18 +21,13 @@ ShrubberyCreationForm::operator=(const ShrubberyCreationForm &rhs) {
   return *this;
 }
 
-/* Getters */
-const std::string &ShrubberyCreationForm::getTarget() const {
-  return this->_target;
-}
-
-/* Setters */
-void ShrubberyCreationForm::beSigned(Bureaucrat const &bureaucrat) {
-  if (bureaucrat.getGrade() > this->getGradeToSign()) {
-    throw Form::GradeTooLowException();
-  } else {
-    this->_signed = true;
-  }
-}
-
 /* Methods */
+void ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
+  if (!this->getIsSigned()) {
+    throw GradeTooHighException();
+  }
+  if (this->getGradeToExecute() < executor.getGrade()) {
+    throw GradeTooLowException();
+  }
+  // TODO do something
+}

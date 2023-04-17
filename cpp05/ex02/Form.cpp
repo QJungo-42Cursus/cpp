@@ -43,6 +43,7 @@ std::string const &Form::getName() const { return _name; }
 bool Form::getIsSigned() const { return _signed; }
 int Form::getGradeToSign() const { return _gradeToSign; }
 int Form::getGradeToExecute() const { return _gradeToExecute; }
+const std::string &Form::getTarget() const { return _target; }
 
 /* Setters */
 void Form::beSigned(Bureaucrat const &bureaucrat) {

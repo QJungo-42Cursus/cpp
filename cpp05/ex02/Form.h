@@ -7,9 +7,6 @@ class Bureaucrat;
 class Form {
 public:
   /* Constructors and destructor */
-  Form();
-  Form(std::string const &name, int const gradeToSign,
-       int const gradeToExecute);
   Form(Form const &src);
   virtual ~Form();
 
@@ -38,12 +35,14 @@ public:
   };
 
 protected:
+  Form();
+  Form(std::string const &name, int const gradeToSign, int const gradeToExecute);
   const std::string _name;
   const int _gradeToSign;
   const int _gradeToExecute;
   bool _signed;
 
-  const std::string _target;
+  std::string _target;
 };
 
 /* Operators overloads */
