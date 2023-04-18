@@ -38,9 +38,9 @@ public:
 
 private:
   const std::string _name;
+  bool _signed;
   const int _gradeToSign;
   const int _gradeToExecute;
-  bool _signed;
 };
 
 /* Operators overloads */

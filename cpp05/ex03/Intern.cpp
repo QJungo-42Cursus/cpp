@@ -4,11 +4,18 @@
 #include "ShrubberyCreationForm.h"
 
 Intern::Intern() {}
-Intern::Intern(Intern const &src) {}
+Intern::Intern(Intern const &src) 
+{
+	(void)src;
+}
 Intern::~Intern() {}
 
 Intern &Intern::operator=(Intern const &rhs)
 {
+	if (this != &rhs) 
+	{
+		return *this;
+	}
 	return *this;
 }
 
