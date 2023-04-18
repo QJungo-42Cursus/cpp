@@ -1,10 +1,6 @@
-#Etats des lieux
-Les exos sont termines, manque juste un petit clean
+# Theorie sur les cast
 
-
-#Theorie sur les cast
-
-cast implicit : cast que le compilateur fait sans qu'on le precise (eg: int a = 5; float b = a;)->conversion
+cast implicit : cast que le compilateur fait sans qu'on le precise (eg: int a = 5; float b = a;) ->conversion
 conversion (implicit ou explicit): change l'encodage en bit d'un valeur pour qu'elle aie dans un autre type de variable avec la (presque) meme valeur
 demotion de type: faire une conversion vers une variable avec moins de memoire -> moins de precision (float vers int) -> doit ce faire explicitemnt
 promotion: l'inverse (gain de precision)
@@ -88,7 +84,7 @@ dans les types qu'on a choisi (ici float et int)
 ```c++
 class Flex {
 
-publice:
+public:
 	// constructeur
 	// blabla
 

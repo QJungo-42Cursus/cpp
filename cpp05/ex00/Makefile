@@ -5,6 +5,9 @@ RM =		rm -f
 OBJS =		$(SRCS:.cpp=.o)
 SRCS =		main.cpp Bureaucrat.cpp
 
+%.o: %.cpp Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
+
 all: $(NAME)
 
 $(NAME): $(OBJS)

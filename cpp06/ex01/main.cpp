@@ -1,9 +1,6 @@
 #include <iostream>
-
-// TODO separer le code !
-struct Data {
-  long value;
-};
+#include <stdint.h>
+#include "data.h"
 
 /// le type "uintptr_t" est un (long) int qui contiendra un pointeur
 uintptr_t serialize(Data *ptr) { return (reinterpret_cast<uintptr_t>(ptr)); }
@@ -11,7 +8,8 @@ uintptr_t serialize(Data *ptr) { return (reinterpret_cast<uintptr_t>(ptr)); }
 /// avec le reinterpret_cast je reprend exactement les memes valeurs en memoire
 Data *deserialize(uintptr_t raw) { return (reinterpret_cast<Data *>(raw)); }
 
-int main() {
+int main()
+{
   Data my_data = {5};
   std::cout << "Value in my_data.value: " << my_data.value << std::endl;
 

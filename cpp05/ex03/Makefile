@@ -10,7 +10,9 @@ SRCS =		main.cpp \
 			RobotomyRequestForm.cpp \
 			PresidentialPardonForm.cpp \
 			Intern.cpp
-			
+
+%.o: %.cpp Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 

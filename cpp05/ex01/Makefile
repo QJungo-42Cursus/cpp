@@ -4,7 +4,8 @@ CFLAGS =	-Wall -Wextra -Werror -std=c++98
 RM =		rm -f
 OBJS =		$(SRCS:.cpp=.o)
 SRCS =		main.cpp Bureaucrat.cpp Form.cpp
-
+%.o: %.cpp Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 all: $(NAME)
 
 $(NAME): $(OBJS)
