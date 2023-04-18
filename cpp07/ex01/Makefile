@@ -6,6 +6,9 @@ RM =		rm -f
 SRCS =		main.cpp
 OBJS =		$(SRCS:.cpp=.o)
 
+%.o: %.cpp Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
+	
 all: $(NAME)
 
 $(NAME): $(OBJS)
@@ -18,12 +21,5 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
-
-t: all
-	./$(NAME)
-
-san:
-	$(CC) -g -fsanitize=address $(SRCS) -o $(NAME)
-	./$(NAME)
 
 .PHONY: all clean fclean re

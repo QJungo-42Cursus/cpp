@@ -2,9 +2,11 @@ NAME =     	whatever
 CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
 RM =		rm -f
-
-SRCS =		main.cpp
 OBJS =		$(SRCS:.cpp=.o)
+SRCS =		main.cpp
+
+%.o: %.cpp Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 
@@ -18,12 +20,5 @@ fclean: clean
 	@$(RM) $(NAME)
 
 re: fclean all
-
-t: all
-	./$(NAME)
-
-san:
-	$(CC) -g -fsanitize=address $(SRCS) -o $(NAME)
-	./$(NAME)
 
 .PHONY: all clean fclean re
