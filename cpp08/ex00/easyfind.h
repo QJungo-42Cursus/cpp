@@ -8,14 +8,18 @@
 #include <list>
 #include <vector>
 
-struct NotFoundException : public std::exception {
+struct NotFoundException : public std::exception
+{
   virtual const char *what() const throw() { return "Not found"; }
 };
 
-template <typename T> int easyfind(T &container, int i) {
+template <typename T>
+int easyfind(T &container, int i)
+{
   typename T::const_iterator it =
       std::find(container.begin(), container.end(), i);
-  if (it == container.end()) {
+  if (it == container.end())
+  {
     throw NotFoundException();
   }
   return *it;

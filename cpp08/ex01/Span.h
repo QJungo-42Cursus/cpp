@@ -8,7 +8,6 @@ class Span {
 public:
   /* Constructeurs et destructeur */
   Span(unsigned int n) : _n(n) { _numbers = {}; }
-
   Span(const Span &other) : _n(other._n) {
     for (int i = 0; i < other._numbers.size(); i++) {
       //_numbers.push_back(_numbers[i]); TODO iterator
