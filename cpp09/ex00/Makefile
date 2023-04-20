@@ -1,7 +1,9 @@
 NAME =     		btc
 CC =			c++
 RM =			rm -f
-SRCS =			main.cpp BitcoinExchange.cpp
+SRCS =			main.cpp \
+				Time.cpp \
+				BitcoinExchange.cpp
 
 CFLAGS =		-Wall -Wextra -Werror -std=c++98 -pedantic-errors
 
