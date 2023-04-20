@@ -10,8 +10,8 @@ class MutantStack : public std::stack<T>
 public:
   /* Constructors and Destructor */
   MutantStack() {}
-  MutantStack(const MutantStack &other) {}
-  MutantStack &operator=(const MutantStack &rhs) {}
+  MutantStack(const MutantStack &other) { _container = other._container; }
+  MutantStack &operator=(const MutantStack &rhs) { _container = rhs._container; }
   virtual ~MutantStack() {}
 
   /* Element access */

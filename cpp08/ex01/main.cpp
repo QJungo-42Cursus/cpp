@@ -1,8 +1,7 @@
 #include "Span.h"
 
-int main(void) {
+int main() {
   Span my_span(1);
-  // TODO il ne addNumber que 9 fois !
   for (unsigned int i = 0; i < 11; i++) {
     try {
       my_span.addNumber(rand() % 100);
