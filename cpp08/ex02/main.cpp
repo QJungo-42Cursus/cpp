@@ -1,24 +1,10 @@
 #include "MutantStack.h"
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
-void other_test() {
-  std::vector<int> v;
-  v.push_back(1);
-  v.push_back(2);
-  v.push_back(3);
-
-  std::vector<int>::iterator it = v.begin();
-  for (int i = 0; i < 50; i++) {
-    std::cout << *it << std::endl;
-    it++;
-  }
-}
-
-int main(void) {
-  other_test();
-  return 0;
-
+int main(void)
+{
   MutantStack<int> my_stack;
 
   my_stack.push(87);
@@ -29,14 +15,14 @@ int main(void) {
   my_stack.pop();
   std::cout << my_stack.size() << std::endl;
 
-  // MutantStack<int>::iterator my_it = std::find(my_stack.begin(),
-  // my_stack.end(), 100);
+  // MutantStack<int>::iterator my_ito = std::find(my_stack.begin(), my_stack.end(), 100);  (void)my_ito;
   MutantStack<int>::iterator my_it = my_stack.begin();
   std::cout << "*my_it " << *my_it << std::endl;
   my_it = my_stack.end();
   std::cout << "*my_it " << *my_it << std::endl;
 
-  std::cout << std::endl << "ft tests: " << std::endl;
+  std::cout << std::endl
+            << "ft tests: " << std::endl;
   MutantStack<int> mstack;
   mstack.push(5);
   mstack.push(17);
@@ -53,7 +39,8 @@ int main(void) {
   MutantStack<int>::iterator ite = mstack.end();
   ++it;
   --it;
-  while (it != ite) {
+  while (it != ite)
+  {
     std::cout << *it << std::endl;
     ++it;
   }

@@ -3,7 +3,7 @@ CC =		c++
 CFLAGS =	-Wall -Wextra -Werror -std=c++98
 RM =		rm -f
 OBJS =		$(SRCS:.cpp=.o)
-SRCS =		main.cpp
+SRCS =		main.cpp Span.cpp
 
 %.o: %.cpp Makefile
 	$(CC) $(CFLAGS) -c $< -o $@

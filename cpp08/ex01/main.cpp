@@ -3,7 +3,7 @@
 int main(void) {
   Span my_span(1);
   // TODO il ne addNumber que 9 fois !
-  for (int i = 0; i < 11; i++) {
+  for (unsigned int i = 0; i < 11; i++) {
     try {
       my_span.addNumber(rand() % 100);
       my_span.longestSpan();
