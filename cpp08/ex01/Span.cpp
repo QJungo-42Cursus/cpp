@@ -34,9 +34,9 @@ unsigned int Span::shortestSpan() const
 {
 	if (_n <= 1 || _numbers.size() <= 1)
 		throw CannotFindSpanExeption();
-	std::list<unsigned int>::const_iterator it =
-		max_element(_numbers.begin(), _numbers.end());
-	return *it;
+	std::vector<unsigned int> tmp = _numbers;
+	std::sort(tmp.begin(), tmp.end());
+	return tmp[1] - tmp[0];
 }
 
 const char *Span::ListFullExeption::what() const throw()

@@ -2,6 +2,7 @@
 #define MUTANTSTACK_H
 #include <iostream>
 #include <iterator>
+#include <list>
 #include <stack>
 
 template <typename T>
@@ -15,36 +16,43 @@ public:
   virtual ~MutantStack() {}
 
   /* Element access */
-  virtual const T &top() const { return _container.back(); }
+  const T &top() const
+  {
+    return _container.back();
+  }
 
   /* Capacity */
-  virtual bool empty() const { return _container.empty(); }
-  virtual int size() const { return _container.size(); }
+  bool empty() const
+  {
+    return _container.empty();
+  }
+  int size() const
+  {
+    return _container.size();
+  }
 
   /* Modifiers */
-  virtual void push(const T &new_element) { _container.push_back(new_element); }
-  virtual void pop() { _container.pop_back(); }
+  void push(const T &new_element)
+  {
+    _container.push_back(new_element);
+  }
+  void pop()
+  {
+    _container.pop_back();
+  }
 
   /* Iterator class */
   class iterator : public std::iterator<std::bidirectional_iterator_tag, T>
   {
   private:
-    typename std::deque<T>::iterator _it;
-    std::deque<T> &_containerRef;
-    iterator() { std::cout << "default called !" << std::endl; }
+    typename std::list<T>::iterator _it;
+    std::list<T> &_containerRef;
+    iterator() {}
 
   public:
-    iterator(std::deque<T> &containerRef, bool is_end)
-        : _containerRef(containerRef)
+    iterator(std::list<T> &containerRef, bool is_end) : _containerRef(containerRef)
     {
-      if (!is_end)
-      {
-        _it = _containerRef.begin();
-      }
-      else
-      {
-        _it = _containerRef.end();
-      }
+      _it = is_end ? _containerRef.end() : _containerRef.begin();
     }
 
     iterator &operator=(const iterator &rhs)
@@ -84,11 +92,12 @@ public:
   };
 
   /* Iterator method */
+
   iterator begin() { return iterator(_container, false); }
   iterator end() { return iterator(_container, true); }
 
 private:
-  std::deque<T> _container;
+  std::list<T> _container;
 };
 
 #endif /* MUTANTSTACK_H */

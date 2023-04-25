@@ -2,7 +2,7 @@
 #define SPAN_H
 #include <algorithm>
 #include <iostream>
-#include <list>
+#include <vector>
 
 class Span
 {
@@ -33,7 +33,7 @@ public:
 
 private:
   const unsigned int _n;
-  std::list<unsigned int> _numbers;
+  std::vector<unsigned int> _numbers;
   Span();
 };
 
