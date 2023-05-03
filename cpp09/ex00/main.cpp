@@ -34,13 +34,11 @@ int run(char *filename)
 			std::size_t pos = line.find(" | ");
 			if (pos == std::string::npos)
 				throw std::runtime_error("invalid file format: " + line);
-			long test;
-			std::stringstream(line.substr(pos + 2)) >> test;
-			if (test < 0)
-				throw std::runtime_error("not a positive number");
-			if (test > std::numeric_limits<int>::max())
-				throw std::runtime_error("too big number");
 			std::stringstream(line.substr(pos + 2)) >> price;
+			if (price < 0)
+				throw std::runtime_error("not a positive number");
+			if (price > 1000)
+				throw std::runtime_error("too big number");
 			result = bitcoinExchange.getValFromTime(time, price);
 		}
 		catch (std::exception &e)
@@ -48,7 +46,7 @@ int run(char *filename)
 			std::cout << "Error: " << e.what() << std::endl;
 			continue;
 		}
-		std::cout << time << " => " << price << " = "  << result << std::endl;
+		std::cout << time << " => " << price << " = " << result << std::endl;
 	}
 	file.close();
 	return 0;
