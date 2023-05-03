@@ -1,4 +1,4 @@
-NAME =     		btc
+NAME =     		PmergeMe
 CC =			c++
 RM =			rm -f
 SRCS =			main.cpp PmergeMe.cpp
@@ -24,6 +24,6 @@ fclean: clean
 re: fclean all
 
 t: all
-	./$(NAME)
+	./$(NAME) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 564 22
 
 .PHONY: all clean fclean re

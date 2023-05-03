@@ -1,4 +1,4 @@
-NAME =     		btc
+NAME =     		RPN
 CC =			c++
 RM =			rm -f
 SRCS =			main.cpp RPN.cpp
