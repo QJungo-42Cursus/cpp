@@ -30,5 +30,4 @@ t: all
 	./$(NAME) "1 2 * 2 / 2 * 2 4 - +"
 	./$(NAME) "(1 + 1)"
 
-
 .PHONY: all clean fclean re

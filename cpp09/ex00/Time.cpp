@@ -1,6 +1,5 @@
 #include "Time.h"
 #include <sstream>
-#include <cstdlib>
 
 Time::Time(std::string time)
 {
@@ -39,31 +38,6 @@ Time &Time::operator=(const Time &orig)
 		day = orig.day;
 	}
 	return *this;
-}
-
-bool operator==(const Time &lhs, const Time &rhs)
-{
-	return lhs.year == rhs.year && lhs.month == rhs.month && lhs.day == rhs.day;
-}
-
-bool operator<(const Time &lhs, const Time &rhs)
-{
-	if (lhs == rhs)
-		return false;
-	if (lhs.year < rhs.year)
-		return true;
-	if (lhs.year > rhs.year)
-		return false;
-	if (lhs.month < rhs.month)
-		return true;
-	if (lhs.month > rhs.month)
-		return false;
-	return lhs.day < rhs.day;
-}
-
-bool operator>(const Time &lhs, const Time &rhs)
-{
-	return !(lhs < rhs) && !(lhs == rhs);
 }
 
 std::ostream &operator<<(std::ostream &os, const Time &time)

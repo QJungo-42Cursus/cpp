@@ -24,6 +24,6 @@ fclean: clean
 re: fclean all
 
 t: all
-	./$(NAME) $(shuf -i 1-3000 -n 1000)
+	./$(NAME) $(jot -r 3000 0 30000000)
 
 .PHONY: all clean fclean re

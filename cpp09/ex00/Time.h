@@ -1,30 +1,24 @@
 #include <iostream>
 
-struct Time
-{
+struct Time {
 public:
-	Time(std::string time);
+    Time(std::string time);
 
-	Time(int year, int month, int day);
+    Time(int year, int month, int day);
 
-	Time(const Time &orig);
+    Time(const Time &orig);
 
-	virtual ~Time();
+    ~Time();
 
-	Time &operator=(const Time &orig);
-
-	int year;
-	int month;
-	int day;
+    int year;
+    int month;
+    int day;
 
 private:
-	Time();
+    Time();
+
+
+    Time &operator=(const Time &orig);
 };
-
-bool operator<(const Time &lhs, const Time &rhs);
-
-bool operator>(const Time &lhs, const Time &rhs);
-
-bool operator==(const Time &lhs, const Time &rhs);
 
 std::ostream &operator<<(std::ostream &os, const Time &time);

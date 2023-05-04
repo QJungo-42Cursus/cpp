@@ -30,6 +30,11 @@ BitcoinExchange::prices_time BitcoinExchange::_CSVtoMap(const std::string &filen
 	BitcoinExchange::prices_time prices_time;
 	std::string line;
 	std::ifstream file(filename.c_str());
+    if (!file.is_open())
+    {
+        std::cout << "Could not open file" << std::endl;
+        exit(1);
+    }
 	std::getline(file, line); // skip first line
 	while (std::getline(file, line))
 	{
@@ -45,6 +50,7 @@ BitcoinExchange::prices_time BitcoinExchange::_CSVtoMap(const std::string &filen
 		}
 		prices_time[time.year][time.month][time.day] = price;
 	}
+    file.close();
 	return prices_time;
 }
 
