@@ -24,6 +24,6 @@ fclean: clean
 re: fclean all
 
 t: all
-	./$(NAME) 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 564 22
+	./$(NAME) $(shuf -i 1-3000 -n 1000)
 
 .PHONY: all clean fclean re
