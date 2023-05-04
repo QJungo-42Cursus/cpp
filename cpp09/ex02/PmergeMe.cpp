@@ -32,12 +32,13 @@ static t_groups merge(const t_groups &left, const t_groups &right)
 
 static void insert_sort(std::vector<unsigned int> &vec)
 {
+	unsigned int tmp;
 	for (unsigned int i = 1; i < vec.size(); i++)
 	{
 		unsigned int j = i;
 		while (j > 0 && vec[j - 1] > vec[j])
 		{
-			unsigned int tmp = vec[j - 1];
+			tmp = vec[j - 1];
 			vec[j - 1] = vec[j];
 			vec[j] = tmp;
 			j--;
