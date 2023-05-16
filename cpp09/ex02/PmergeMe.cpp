@@ -2,9 +2,8 @@
 #include <stdexcept>
 #include <iostream>
 
-typedef std::vector <std::vector<unsigned int> > t_groups;
+typedef std::vector<std::vector<unsigned int> > t_groups;
 
-static const unsigned int GROUP_SIZE = 5;
 
 static t_groups merge(const t_groups &left, const t_groups &right) {
     t_groups result;
@@ -50,51 +49,38 @@ static t_groups merge_sort(t_groups &groups) {
     return merge(left, right);
 }
 
+static const unsigned int GROUP_SIZE = 5;
+
 PmergeMe::PmergeMe(std::vector<unsigned int> &vector) {
-    /// Splitting into groups
-    t_groups groups;
-    for (unsigned int i = 0; i < vector.size(); i += GROUP_SIZE) {
-        std::vector<unsigned int> group;
-        for (unsigned int j = 0; j < GROUP_SIZE && i + j < vector.size(); j++)
-            group.push_back(vector[i + j]);
-        groups.push_back(group);
+    std::vector<unsigned int> result = vector;
+    for (unsigned int group_size = GROUP_SIZE; group_size > 0; group_size /= 2) {
+        /// Splitting into groups
+        t_groups groups;
+        for (unsigned int i = 0; i < result.size(); i += group_size) {
+            std::vector<unsigned int> group;
+            for (unsigned int j = 0; j < group_size && i + j < result.size(); j++)
+                group.push_back(result[i + j]);
+            groups.push_back(group);
+        }
+        result.clear();
 
-        // log group
-        std::cout << "Group " << i / GROUP_SIZE << ": ";
-        for (unsigned int j = 0; j < group.size(); j++)
-            std::cout << group[j] << " ";
-        std::cout << std::endl;
+        /// Insert sort all groups
+        for (unsigned int i = 0; i < groups.size(); i++)
+            insert_sort(groups[i]);
+
+        /// Merge sort the groups
+        groups = merge_sort(groups);
+        for (unsigned int i = 0; i < groups.size(); i++)
+            for (unsigned int j = 0; j < groups[i].size(); j++)
+                result.push_back(groups[i][j]);
     }
-
-    /// Insert sort all groups
-    for (unsigned int i = 0; i < groups.size(); i++)
-        insert_sort(groups[i]);
 
     /// Display the result
-    std::cout << "after insert sort: ";
-    for (unsigned int i = 0; i < groups.size(); i++) {
-        for (unsigned int j = 0; j < groups[i].size(); j++)
-            std::cout << groups[i][j] << " ";
-        std::cout << "| ";
-    }
-    std::cout << std::endl;
-
-    /// Merge sort the groups
-    groups = merge_sort(groups);
-    std::vector<unsigned int> result;
-    for (unsigned int i = 0; i < groups.size(); i++)
-        for (unsigned int j = 0; j < groups[i].size(); j++)
-            result.push_back(groups[i][j]);
-
-    /// Display the result
-    std::cout << "PmergeMe: ";
-    for (unsigned int i = 0; i < result.size(); i++) {
-        if (i % GROUP_SIZE == 0)
-            std::cout << "| ";
-        std::cout << result[i] << " ";
-    }
-    std::cout << std::endl;
+//    std::cout << "PmergeMe: ";
+//    for (unsigned int i = 0; i < result.size(); i++) {
+//        std::cout << result[i] << " ";
+//    }
+//    std::cout << std::endl;
 }
 
-PmergeMe::~PmergeMe() {
-}
+PmergeMe::~PmergeMe() {}
