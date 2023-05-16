@@ -4,6 +4,9 @@
 #include <iomanip>
 #include <sys/time.h>
 #include "PmergeMe.h"
+#include <cstring>
+#include <cstdlib>
+#include <limits>
 
 static bool is_valid_arg(char *arg) {
     int i = 0;

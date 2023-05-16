@@ -1,7 +1,5 @@
 #include "BitcoinExchange.h"
 #include <fstream>
-#include <sstream>
-#include <limits>
 
 int run(char *filename)
 {

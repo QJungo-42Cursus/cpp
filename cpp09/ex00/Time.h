@@ -1,4 +1,6 @@
 #include <iostream>
+#include <sstream>
+#include <cstdlib>
 
 struct Time {
 public:
@@ -16,7 +18,6 @@ public:
 
 private:
     Time();
-
 
     Time &operator=(const Time &orig);
 };
